@@ -62,6 +62,11 @@ struct EKLComplete: View {
                     }
                 .onDelete(perform: removeItems)
                 }
+                    .opacity(0.7)
+                    .background(Image("Background")
+                    .resizable()
+                    .edgesIgnoringSafeArea(.all))
+                    
             .navigationBarTitle("Einkaufsliste")
                 .navigationBarItems(trailing:
                     Button(action: {

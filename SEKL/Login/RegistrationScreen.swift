@@ -23,10 +23,6 @@ struct RegistrationScreen : View {
     var body: some View {
         NavigationView {
             ZStack{
-                Image("Background")
-                .resizable()
-                .edgesIgnoringSafeArea(.all)
-                
                 List{
                 Section(header: Text("Userinformationen"))
                     {
@@ -44,19 +40,17 @@ struct RegistrationScreen : View {
                         
                         Button(action: {
                             self.writeDB(self.uuid, self.myName, self.myAge, self.myPassword)
-                            
                         }){
                             Text("Registration!")
-                                
                         }
                         .frame(width: 150, height: 50, alignment: .center)
                         .foregroundColor(.white)
                         .padding(.horizontal)
                         .background(Color.blue)
-                        
                     }
+                    
                 }
-            }.navigationBarTitle("Registration")
+            }.navigationBarTitle("Registration", displayMode: .inline)
             
         }
     }

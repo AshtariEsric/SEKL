@@ -18,9 +18,7 @@ struct AddThings: View {
     //Beide Views teilen das selbe Array
     @ObservedObject var expense: Expense
     @ObservedObject var ingredients = ingredientsList()
-    
     @State private var beschreibung = ""
-    
     @State private var menge = ""
     @State private var price = ""
     @State private var rezeptOrIngredients = "Default"
