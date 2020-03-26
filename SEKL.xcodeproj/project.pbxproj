@@ -3,19 +3,33 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		861118272424E2BA001B50DD /* RecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861118262424E2BA001B50DD /* RecipesView.swift */; };
+		861118292424E405001B50DD /* oftenUsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861118282424E405001B50DD /* oftenUsedView.swift */; };
+		8611182B2424E544001B50DD /* ShareEKL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8611182A2424E544001B50DD /* ShareEKL.swift */; };
+		86210C6A2422C2CB0001D5E9 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 86210C692422C2CB0001D5E9 /* FacebookCore */; };
+		86210C6C2422C2CB0001D5E9 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 86210C6B2422C2CB0001D5E9 /* FacebookLogin */; };
+		86210C6E2422C2CB0001D5E9 /* FacebookShare in Frameworks */ = {isa = PBXBuildFile; productRef = 86210C6D2422C2CB0001D5E9 /* FacebookShare */; };
+		86210C7024238F0D0001D5E9 /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86210C6F24238F0D0001D5E9 /* LoginFormView.swift */; };
 		86B5677623C5446700399EF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5677523C5446700399EF5 /* AppDelegate.swift */; };
 		86B5677823C5446700399EF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5677723C5446700399EF5 /* SceneDelegate.swift */; };
 		86B5677A23C5446700399EF5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5677923C5446700399EF5 /* ContentView.swift */; };
 		86B5677C23C5446B00399EF5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86B5677B23C5446B00399EF5 /* Assets.xcassets */; };
 		86B5677F23C5446B00399EF5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 86B5677E23C5446B00399EF5 /* Preview Assets.xcassets */; };
 		86B5678223C5446B00399EF5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 86B5678023C5446B00399EF5 /* LaunchScreen.storyboard */; };
+		86BE551B23C5491400FFAEB9 /* RegistrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE551A23C5491400FFAEB9 /* RegistrationScreen.swift */; };
+		86C0F8A02406E9B9007B997A /* AddThings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0F89F2406E9B9007B997A /* AddThings.swift */; };
+		86C0F8A22406EE13007B997A /* EKLComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0F8A12406EE13007B997A /* EKLComplete.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		861118262424E2BA001B50DD /* RecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesView.swift; sourceTree = "<group>"; };
+		861118282424E405001B50DD /* oftenUsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oftenUsedView.swift; sourceTree = "<group>"; };
+		8611182A2424E544001B50DD /* ShareEKL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareEKL.swift; sourceTree = "<group>"; };
+		86210C6F24238F0D0001D5E9 /* LoginFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormView.swift; sourceTree = "<group>"; };
 		86B5677223C5446700399EF5 /* SEKL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SEKL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86B5677523C5446700399EF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		86B5677723C5446700399EF5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -24,6 +38,9 @@
 		86B5677E23C5446B00399EF5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		86B5678123C5446B00399EF5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		86B5678323C5446B00399EF5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		86BE551A23C5491400FFAEB9 /* RegistrationScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationScreen.swift; sourceTree = "<group>"; };
+		86C0F89F2406E9B9007B997A /* AddThings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddThings.swift; sourceTree = "<group>"; };
+		86C0F8A12406EE13007B997A /* EKLComplete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKLComplete.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +48,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				86210C6C2422C2CB0001D5E9 /* FacebookLogin in Frameworks */,
+				86210C6A2422C2CB0001D5E9 /* FacebookCore in Frameworks */,
+				86210C6E2422C2CB0001D5E9 /* FacebookShare in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +76,8 @@
 		86B5677423C5446700399EF5 /* SEKL */ = {
 			isa = PBXGroup;
 			children = (
+				86C0F89E2406E99A007B997A /* EKL */,
+				86C0F89D2406E965007B997A /* Login */,
 				86B5677523C5446700399EF5 /* AppDelegate.swift */,
 				86B5677723C5446700399EF5 /* SceneDelegate.swift */,
 				86B5677923C5446700399EF5 /* ContentView.swift */,
@@ -75,6 +97,27 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		86C0F89D2406E965007B997A /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				86210C6F24238F0D0001D5E9 /* LoginFormView.swift */,
+				86BE551A23C5491400FFAEB9 /* RegistrationScreen.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		86C0F89E2406E99A007B997A /* EKL */ = {
+			isa = PBXGroup;
+			children = (
+				86C0F89F2406E9B9007B997A /* AddThings.swift */,
+				86C0F8A12406EE13007B997A /* EKLComplete.swift */,
+				8611182A2424E544001B50DD /* ShareEKL.swift */,
+				861118282424E405001B50DD /* oftenUsedView.swift */,
+				861118262424E2BA001B50DD /* RecipesView.swift */,
+			);
+			path = EKL;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -91,6 +134,11 @@
 			dependencies = (
 			);
 			name = SEKL;
+			packageProductDependencies = (
+				86210C692422C2CB0001D5E9 /* FacebookCore */,
+				86210C6B2422C2CB0001D5E9 /* FacebookLogin */,
+				86210C6D2422C2CB0001D5E9 /* FacebookShare */,
+			);
 			productName = SEKL;
 			productReference = 86B5677223C5446700399EF5 /* SEKL.app */;
 			productType = "com.apple.product-type.application";
@@ -119,6 +167,9 @@
 				Base,
 			);
 			mainGroup = 86B5676923C5446700399EF5;
+			packageReferences = (
+				86210C682422C2CB0001D5E9 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
+			);
 			productRefGroup = 86B5677323C5446700399EF5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -146,8 +197,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8611182B2424E544001B50DD /* ShareEKL.swift in Sources */,
 				86B5677623C5446700399EF5 /* AppDelegate.swift in Sources */,
+				861118292424E405001B50DD /* oftenUsedView.swift in Sources */,
+				86C0F8A22406EE13007B997A /* EKLComplete.swift in Sources */,
+				861118272424E2BA001B50DD /* RecipesView.swift in Sources */,
 				86B5677823C5446700399EF5 /* SceneDelegate.swift in Sources */,
+				86210C7024238F0D0001D5E9 /* LoginFormView.swift in Sources */,
+				86BE551B23C5491400FFAEB9 /* RegistrationScreen.swift in Sources */,
+				86C0F8A02406E9B9007B997A /* AddThings.swift in Sources */,
 				86B5677A23C5446700399EF5 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +398,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		86210C682422C2CB0001D5E9 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.2.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		86210C692422C2CB0001D5E9 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86210C682422C2CB0001D5E9 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		86210C6B2422C2CB0001D5E9 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86210C682422C2CB0001D5E9 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
+		86210C6D2422C2CB0001D5E9 /* FacebookShare */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 86210C682422C2CB0001D5E9 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookShare;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 86B5676A23C5446700399EF5 /* Project object */;
 }
