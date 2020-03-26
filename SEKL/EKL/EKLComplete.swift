@@ -14,6 +14,7 @@ struct ExpenseItem : Identifiable, Codable {
     let menge : Int
     let type : String
     let price : Int
+    let unitType : String
 }
 
 //ObservableObject können mehr als in einer View genutzt werden
@@ -55,8 +56,7 @@ struct EKLComplete: View {
                             VStack(alignment: .leading){
                                 Text(item.beschreibung)
                                     .font(.headline)
-                                Text(String(item.menge) + " Stk.")
-                                Text("€" + String(item.price))
+                                Text(String(item.menge) + item.unitType)
                             }
                         }
                     }
