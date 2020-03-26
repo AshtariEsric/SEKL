@@ -16,7 +16,6 @@ struct ContentView : View {
         return Group {
             if signInSuccess {
                 EKLComplete()
-                //AppHome()
             } else {
                 LoginFormView(signInSuccess : $signInSuccess)
             }
