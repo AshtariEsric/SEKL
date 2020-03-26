@@ -70,7 +70,6 @@ struct AddThings: View {
                         .frame(width: 100, height: 100)
                     }
                 }
-                
                 Button(action: {
                     if let actualPrice = Int(self.price){
                         let item = ExpenseItem(beschreibung: self.beschreibung, menge: Int(self.menge) ?? 0, type: self.type, price: actualPrice, unitType: self.unitType)

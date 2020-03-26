@@ -23,7 +23,7 @@ struct RegistrationScreen : View {
     var body: some View {
         NavigationView {
             ZStack{
-                List{
+                Form{
                 Section(header: Text("Userinformationen"))
                     {
                         TextField("Nickname", text: $myName)
@@ -47,11 +47,9 @@ struct RegistrationScreen : View {
                         .foregroundColor(.white)
                         .padding(.horizontal)
                         .background(Color.blue)
-                    }
-                    
                 }
-            }.navigationBarTitle("Registration", displayMode: .inline)
-            
+                }.navigationBarTitle("Registration", displayMode: .inline)
+            }
         }
     }
 }
