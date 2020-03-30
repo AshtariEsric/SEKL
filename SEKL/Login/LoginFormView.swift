@@ -9,17 +9,12 @@
 import SwiftUI
 
 struct LoginFormView: View {
-    @State private var initialUsername = "Test"
-    @State private var initialPassword = "12345"
-    
-    @State private var name = String()
-    @State private var pw = String()
     @State private var myAlertCredentials = false
     @State private var loginDisplay : String = "Login"
     @Binding var signInSuccess: Bool
     
     private var validate : Bool {
-        !name.isEmpty && !pw.isEmpty
+        !email.isEmpty && !password.isEmpty
     }
        
     @State private var password : String = ""
@@ -33,9 +28,11 @@ struct LoginFormView: View {
         session.signIn(email: email, password: password){ (result, error) in
             if let error = error {
                 self.error = error.localizedDescription
+                self.myAlertCredentials = true
             } else {
                 self.email = ""
                 self.password = ""
+                self.signInSuccess = true
             }
         }
     }
@@ -48,11 +45,9 @@ struct LoginFormView: View {
                     .edgesIgnoringSafeArea(.all)
                    
                 VStack{
-
                     Spacer()
                     Spacer()
-                          
-                        //Text Username + Passwort
+            //Text Username + Passwort
                     HStack(alignment: .center){
                         Spacer()
                         Text("Username")
@@ -63,36 +58,21 @@ struct LoginFormView: View {
                             .font(.headline)
                         Spacer()
                         }
-                           
-                           //TextField for insert name + password
+            //TextField for insert name + password
                     HStack{
-                        TextField("Fill your name", text: $name)
+                        TextField("Fill your name", text: $email)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .scaledToFit()
                         Spacer()
-                        SecureField("123456789", text:$pw)
+                        SecureField("123456789", text:$password)
                             .scaledToFit()
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                             Spacer()
                            }
                         Spacer()
                         Spacer()
-                           
-                           //Login + Registration Button
-                        Button(action:  {
-                            if !self.name.isEmpty && !self.pw.isEmpty
-                            {
-                                self.loginDisplay = self.loginDisplay == "Login" ? "Logging in..." : "Login"
-                            }
-                            if self.name == self.initialUsername && self.pw == self.initialPassword
-                            {
-                                self.signInSuccess = true
-                            } else
-                            {
-                                self.myAlertCredentials = true
-                                self.loginDisplay = "Login"
-                            }
-                           })
+            //Login Button with signIn Function
+                    Button(action: signIn)
                            {
                             Text(loginDisplay)
                                 .foregroundColor(.white)
@@ -102,21 +82,22 @@ struct LoginFormView: View {
                                 .background(validate ? Color.green : Color.red)
                                 .cornerRadius(80)
                             }
-                               .alert(isPresented: $myAlertCredentials) {
+                            .alert(isPresented: $myAlertCredentials) {
                                 Alert(title: Text("Error!"), message: Text("Wrong Username or Password"), dismissButton: .default(Text("Ok")))
                             }
-                        Divider()
                            //NavigationLink for registration
                            NavigationLink(destination: RegistrationScreen())
                                {
-                                Text("Registrieren")
-                                    .foregroundColor(.white)
-                                    .font(.subheadline)
-                                    .frame(width: 150, height: 50, alignment: .center)
-                                    .background(Color.blue)
-                                    .cornerRadius(80)
-                               }
-                                .frame(width: 200, alignment: .bottom)
+                                HStack{
+                                    Text("Ich bin neu hier - ")
+                                        .font(.system(size: 14, weight: .light))
+                                        .foregroundColor(.primary)
+                                    Text("Registrieren!")
+                                        .font(.system(size:14, weight: .semibold))
+                                        .foregroundColor(Color.blue)
+                                   }
+                        }
+                               
                            }
                }.navigationBarTitle("Willkommen!")
            }
