@@ -10,7 +10,13 @@ import SwiftUI
 
 
 struct ContentView : View {
-   @State var signInSuccess = false
+    @State var signInSuccess = false
+    @EnvironmentObject var session: SessionStore
+    
+    func getUser(){
+        session.listen()
+    }
+    
     
     var body : some View {
         return Group {

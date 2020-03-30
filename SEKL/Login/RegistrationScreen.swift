@@ -9,16 +9,10 @@
 import SwiftUI
 
 struct RegistrationScreen : View {
-    @State private var myName : String = ""
-    @State private var myAge : String = ""
-    @State private var myPassword : String = ""
+    @State private var password : String = ""
     @State private var email : String = ""
     @State private var uuid = UUID().uuidString
-    
-    func writeDB(_ uuid: String, _ myName: String, _ myAge : String, _ myPassword: String){
-        print("\(self.uuid) wird als ID gespeichert, \(self.myName) wird als Name gespeichert, \(self.myAge) wird als alter gespeichert und dein Password ist \(self.myPassword)")
-    }
-    
+    @State private var error : String = ""
     
     var body: some View {
         NavigationView {
@@ -26,20 +20,13 @@ struct RegistrationScreen : View {
                 Form{
                 Section(header: Text("Userinformationen"))
                     {
-                        TextField("Nickname", text: $myName)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        
-                        TextField("Age", text: $myAge)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        
-                        SecureField("Password", text: $myPassword)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-                        
                         TextField("Email", text: $email)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
+                        SecureField("Password", text: $password)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
                         
                         Button(action: {
-                            self.writeDB(self.uuid, self.myName, self.myAge, self.myPassword)
+                            print("test")
                         }){
                             Text("Registration!")
                         }

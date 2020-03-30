@@ -13,7 +13,6 @@ struct ExpenseItem : Identifiable, Codable {
     let beschreibung : String
     let menge : Int
     let type : String
-    let price : Int
     let unitType : String
 }
 
@@ -75,7 +74,7 @@ struct EKLComplete: View {
                     Image(systemName: "plus")
                 })
                     .sheet(isPresented: $showingAddExpense){
-                        AddThings(expense: self.expenses)
+                        AddView(expense: self.expenses)
                 }
             }
             .tabItem {
@@ -93,7 +92,7 @@ struct EKLComplete: View {
                         Image(systemName: "repeat")
                         Text("Often used")
                     }
-            ShareEKL()
+            ShareView()
                     .tabItem{
                         Image(systemName: "paperplane")
                         Text("Share")

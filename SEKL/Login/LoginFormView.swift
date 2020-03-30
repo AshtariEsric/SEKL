@@ -18,50 +18,68 @@ struct LoginFormView: View {
     @State private var loginDisplay : String = "Login"
     @Binding var signInSuccess: Bool
     
-       private var validate : Bool {
-           !name.isEmpty && !pw.isEmpty
-       }
+    private var validate : Bool {
+        !name.isEmpty && !pw.isEmpty
+    }
        
-       var body: some View {
-           NavigationView {
-               ZStack{
-                    Image("Background")
-                       .resizable()
-                       .edgesIgnoringSafeArea(.all)
+    @State private var password : String = ""
+    @State private var email : String = ""
+    @State private var uuid = UUID().uuidString
+    @State private var error : String = ""
+    
+    @EnvironmentObject var session: SessionStore
+    
+    func signIn(){
+        session.signIn(email: email, password: password){ (result, error) in
+            if let error = error {
+                self.error = error.localizedDescription
+            } else {
+                self.email = ""
+                self.password = ""
+            }
+        }
+    }
+    
+    var body: some View {
+        NavigationView {
+            ZStack{
+                Image("Background")
+                    .resizable()
+                    .edgesIgnoringSafeArea(.all)
                    
-                    VStack{
+                VStack{
 
-                        Spacer()
-                        Spacer()
+                    Spacer()
+                    Spacer()
                           
-                           //Text Username + Passwort
-                        HStack(alignment: .center){
-                            Spacer()
-                            Text("Username")
-                                .font(.headline)
-                            Spacer()
-                            Spacer()
-                            Text("Password")
-                                .font(.headline)
-                            Spacer()
-                           }
+                        //Text Username + Passwort
+                    HStack(alignment: .center){
+                        Spacer()
+                        Text("Username")
+                            .font(.headline)
+                        Spacer()
+                        Spacer()
+                        Text("Password")
+                            .font(.headline)
+                        Spacer()
+                        }
                            
                            //TextField for insert name + password
-                        HStack{
-                            TextField("Fill your name", text: $name)
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                    HStack{
+                        TextField("Fill your name", text: $name)
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
                                 .scaledToFit()
-                            Spacer()
-                            SecureField("123456789", text:$pw)
-                                .scaledToFit()
-                                .textFieldStyle(RoundedBorderTextFieldStyle())
+                        Spacer()
+                        SecureField("123456789", text:$pw)
+                            .scaledToFit()
+                            .textFieldStyle(RoundedBorderTextFieldStyle())
                             Spacer()
                            }
                         Spacer()
                         Spacer()
                            
                            //Login + Registration Button
-                        Button(action: {
+                        Button(action:  {
                             if !self.name.isEmpty && !self.pw.isEmpty
                             {
                                 self.loginDisplay = self.loginDisplay == "Login" ? "Logging in..." : "Login"
@@ -105,3 +123,9 @@ struct LoginFormView: View {
        }
 }
 
+
+struct LoginFormView_Previews: PreviewProvider {
+    static var previews: some View {
+        /*@START_MENU_TOKEN@*/Text("Hello, World!")/*@END_MENU_TOKEN@*/
+    }
+}
