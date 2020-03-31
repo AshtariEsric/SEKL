@@ -76,7 +76,7 @@ struct LoginFormView: View {
                            {
                             Text(loginDisplay)
                                 .foregroundColor(.white)
-                                .font(.subheadline)
+                                .font(.headline)
                                 .frame(width: 150, height: 50, alignment: .center)
                                 .clipped()
                                 .background(validate ? Color.green : Color.red)
@@ -85,7 +85,8 @@ struct LoginFormView: View {
                             .alert(isPresented: $myAlertCredentials) {
                                 Alert(title: Text("Error!"), message: Text("Wrong Username or Password"), dismissButton: .default(Text("Ok")))
                             }
-                           //NavigationLink for registration
+                    
+            //NavigationLink for registration
                            NavigationLink(destination: RegistrationScreen())
                                {
                                 HStack{
