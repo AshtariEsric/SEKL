@@ -14,6 +14,7 @@ struct FeedbackView: View {
     
     var body: some View {
         NavigationView {
+            ZStack{
                 VStack(alignment: .center){
                     Text("Du hast Anmerkungen oder Verbesserungsvorschläge? \nTeile sie uns mit und wir kümmern uns schnellstmöglich darum!")
                         .font(.headline)
@@ -21,9 +22,10 @@ struct FeedbackView: View {
                     Spacer()
                     abfrageView()
                     Spacer()
-                    }
-                }.navigationBarTitle("Feedback")
-            .padding()
+                    }.navigationBarTitle("Feedback")
+                    .padding()
+                }
+            }
         }
     }
 

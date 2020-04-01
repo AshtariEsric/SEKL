@@ -8,6 +8,6 @@ target 'SEKL' do
   # Pods for SEKL
 	pod 'Firebase/Analytics'
 	pod 'Firebase/Auth'
-
+	pod 'SOTabBar'
 
 end

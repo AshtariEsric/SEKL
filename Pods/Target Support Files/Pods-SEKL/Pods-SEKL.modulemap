@@ -1,4 +1,4 @@
-framework module Pods_SEKL {
+module Pods_SEKL {
   umbrella header "Pods-SEKL-umbrella.h"
 
   export *
