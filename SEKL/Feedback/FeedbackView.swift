@@ -9,9 +9,6 @@
 import SwiftUI
 
 struct FeedbackView: View {
-    
-
-    
     var body: some View {
         NavigationView {
             ZStack{
