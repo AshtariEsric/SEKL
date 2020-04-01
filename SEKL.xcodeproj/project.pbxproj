@@ -13,7 +13,6 @@
 		8612349924320B0A0035442E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8612349824320B0A0035442E /* GoogleService-Info.plist */; };
 		86210C7024238F0D0001D5E9 /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86210C6F24238F0D0001D5E9 /* LoginFormView.swift */; };
 		863D2AA82432007F00F6EC22 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863D2AA72432007F00F6EC22 /* SessionStore.swift */; };
-		86423838CE7A37209C345A5C /* Pods_SEKL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 43C5CD1146B355B3AE819F69 /* Pods_SEKL.framework */; };
 		86B5677623C5446700399EF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5677523C5446700399EF5 /* AppDelegate.swift */; };
 		86B5677823C5446700399EF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5677723C5446700399EF5 /* SceneDelegate.swift */; };
 		86B5677A23C5446700399EF5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5677923C5446700399EF5 /* ContentView.swift */; };
@@ -23,12 +22,13 @@
 		86BE551B23C5491400FFAEB9 /* RegistrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE551A23C5491400FFAEB9 /* RegistrationScreen.swift */; };
 		86C0F8A02406E9B9007B997A /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0F89F2406E9B9007B997A /* AddView.swift */; };
 		86C0F8A22406EE13007B997A /* EKLComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0F8A12406EE13007B997A /* EKLComplete.swift */; };
+		AEE9122361D8ACD850176722 /* libPods-SEKL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D8909FD1A73FB2FB0672E3 /* libPods-SEKL.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0FB2D10EA9D171CDCE9E0616 /* Pods-SEKL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SEKL.release.xcconfig"; path = "Target Support Files/Pods-SEKL/Pods-SEKL.release.xcconfig"; sourceTree = "<group>"; };
-		43C5CD1146B355B3AE819F69 /* Pods_SEKL.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SEKL.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		670E0B45EBE1E237721A4098 /* Pods-SEKL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SEKL.debug.xcconfig"; path = "Target Support Files/Pods-SEKL/Pods-SEKL.debug.xcconfig"; sourceTree = "<group>"; };
+		79D8909FD1A73FB2FB0672E3 /* libPods-SEKL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SEKL.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		861118262424E2BA001B50DD /* RecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesView.swift; sourceTree = "<group>"; };
 		861118282424E405001B50DD /* oftenUsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oftenUsedView.swift; sourceTree = "<group>"; };
 		8611182A2424E544001B50DD /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				86423838CE7A37209C345A5C /* Pods_SEKL.framework in Frameworks */,
+				AEE9122361D8ACD850176722 /* libPods-SEKL.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +63,7 @@
 		15ACDBCEAB0DFF6932B14EE1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				43C5CD1146B355B3AE819F69 /* Pods_SEKL.framework */,
+				79D8909FD1A73FB2FB0672E3 /* libPods-SEKL.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -153,7 +153,6 @@
 				86B5676E23C5446700399EF5 /* Sources */,
 				86B5676F23C5446700399EF5 /* Frameworks */,
 				86B5677023C5446700399EF5 /* Resources */,
-				67B3ED700CE54DE130BC7876 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -188,8 +187,6 @@
 				Base,
 			);
 			mainGroup = 86B5676923C5446700399EF5;
-			packageReferences = (
-			);
 			productRefGroup = 86B5677323C5446700399EF5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -234,23 +231,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		67B3ED700CE54DE130BC7876 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SEKL/Pods-SEKL-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SEKL/Pods-SEKL-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SEKL/Pods-SEKL-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
