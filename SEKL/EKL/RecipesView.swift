@@ -10,7 +10,11 @@ import SwiftUI
 
 struct RecipesView: View {
     var body: some View {
-        Text("Under construktion \nRecipesView")
+        NavigationView {
+            VStack{
+                Text("Hello")
+            }.navigationBarTitle("Rezepte")
+        }
     }
 }
 

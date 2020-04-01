@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,6 +12,7 @@
 		8611182B2424E544001B50DD /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8611182A2424E544001B50DD /* ShareView.swift */; };
 		8612349924320B0A0035442E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8612349824320B0A0035442E /* GoogleService-Info.plist */; };
 		86210C7024238F0D0001D5E9 /* LoginFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86210C6F24238F0D0001D5E9 /* LoginFormView.swift */; };
+		863AD4DF2434B16B00C85617 /* FeedbackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863AD4DE2434B16B00C85617 /* FeedbackView.swift */; };
 		863D2AA82432007F00F6EC22 /* SessionStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 863D2AA72432007F00F6EC22 /* SessionStore.swift */; };
 		86B5677623C5446700399EF5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5677523C5446700399EF5 /* AppDelegate.swift */; };
 		86B5677823C5446700399EF5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86B5677723C5446700399EF5 /* SceneDelegate.swift */; };
@@ -34,6 +35,7 @@
 		8611182A2424E544001B50DD /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		8612349824320B0A0035442E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		86210C6F24238F0D0001D5E9 /* LoginFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFormView.swift; sourceTree = "<group>"; };
+		863AD4DE2434B16B00C85617 /* FeedbackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackView.swift; sourceTree = "<group>"; };
 		863D2AA72432007F00F6EC22 /* SessionStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionStore.swift; sourceTree = "<group>"; };
 		86B5677223C5446700399EF5 /* SEKL.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SEKL.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		86B5677523C5446700399EF5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,7 +98,6 @@
 				86B5677923C5446700399EF5 /* ContentView.swift */,
 				86B5677B23C5446B00399EF5 /* Assets.xcassets */,
 				86B5678023C5446B00399EF5 /* LaunchScreen.storyboard */,
-				8612349824320B0A0035442E /* GoogleService-Info.plist */,
 				86B5678323C5446B00399EF5 /* Info.plist */,
 				86B5677D23C5446B00399EF5 /* Preview Content */,
 			);
@@ -114,6 +115,7 @@
 		86C0F89D2406E965007B997A /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				8612349824320B0A0035442E /* GoogleService-Info.plist */,
 				86210C6F24238F0D0001D5E9 /* LoginFormView.swift */,
 				86BE551A23C5491400FFAEB9 /* RegistrationScreen.swift */,
 				863D2AA72432007F00F6EC22 /* SessionStore.swift */,
@@ -126,6 +128,7 @@
 			children = (
 				86C0F89F2406E9B9007B997A /* AddView.swift */,
 				86C0F8A12406EE13007B997A /* EKLComplete.swift */,
+				863AD4DE2434B16B00C85617 /* FeedbackView.swift */,
 				8611182A2424E544001B50DD /* ShareView.swift */,
 				861118282424E405001B50DD /* oftenUsedView.swift */,
 				861118262424E2BA001B50DD /* RecipesView.swift */,
@@ -245,6 +248,7 @@
 				861118292424E405001B50DD /* oftenUsedView.swift in Sources */,
 				86C0F8A22406EE13007B997A /* EKLComplete.swift in Sources */,
 				861118272424E2BA001B50DD /* RecipesView.swift in Sources */,
+				863AD4DF2434B16B00C85617 /* FeedbackView.swift in Sources */,
 				86B5677823C5446700399EF5 /* SceneDelegate.swift in Sources */,
 				86210C7024238F0D0001D5E9 /* LoginFormView.swift in Sources */,
 				86BE551B23C5491400FFAEB9 /* RegistrationScreen.swift in Sources */,

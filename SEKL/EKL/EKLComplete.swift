@@ -85,17 +85,22 @@ struct EKLComplete: View {
             RecipesView()
                     .tabItem {
                         Image(systemName: "doc.text")
-                        Text("Receipts")
+                        Text("Rezepte")
                     }
+            FeedbackView()
+                .tabItem{
+                    Image(systemName: "exclamationmark.bubble")
+                    Text("Feedback")
+            }
             oftenUsedView()
                     .tabItem{
                         Image(systemName: "repeat")
-                        Text("Often used")
+                        Text("Häufig genutzt")
                     }
             ShareView()
                     .tabItem{
                         Image(systemName: "paperplane")
-                        Text("Share")
+                        Text("Teilen")
                     }
         }
     }

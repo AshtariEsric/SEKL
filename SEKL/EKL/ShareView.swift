@@ -10,7 +10,11 @@ import SwiftUI
 
 struct ShareView: View {
     var body: some View {
-        Text("Under construktion \nShareEKL")
+        NavigationView {
+            VStack{
+                Text("Hello")
+            }.navigationBarTitle("Teilen")
+        }
     }
 }
 

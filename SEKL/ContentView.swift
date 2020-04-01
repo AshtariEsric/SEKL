@@ -1,8 +1,7 @@
-//
 //  ContentView.swift
 //  EKL
 //
-//  Created by SkyByte on 09.09.19.
+//  Created by Dennis Hasselbusch on 09.09.19.
 //  Copyright © 2019 Dennis Hasselbusch. All rights reserved.
 //
 

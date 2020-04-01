@@ -10,7 +10,11 @@ import SwiftUI
 
 struct oftenUsedView: View {
     var body: some View {
-        Text("Under construktion \noftenUsedView")
+        NavigationView {
+            VStack{
+                Text("Hello")
+            }.navigationBarTitle("Häufig genutzt")
+        }
     }
 }
 
