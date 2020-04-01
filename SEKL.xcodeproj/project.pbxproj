@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		860E527C243535BD0028C01C /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E527B243535BD0028C01C /* Rating.swift */; };
 		861118272424E2BA001B50DD /* RecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861118262424E2BA001B50DD /* RecipesView.swift */; };
 		861118292424E405001B50DD /* oftenUsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861118282424E405001B50DD /* oftenUsedView.swift */; };
 		8611182B2424E544001B50DD /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8611182A2424E544001B50DD /* ShareView.swift */; };
@@ -30,6 +31,7 @@
 		0FB2D10EA9D171CDCE9E0616 /* Pods-SEKL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SEKL.release.xcconfig"; path = "Target Support Files/Pods-SEKL/Pods-SEKL.release.xcconfig"; sourceTree = "<group>"; };
 		670E0B45EBE1E237721A4098 /* Pods-SEKL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SEKL.debug.xcconfig"; path = "Target Support Files/Pods-SEKL/Pods-SEKL.debug.xcconfig"; sourceTree = "<group>"; };
 		79D8909FD1A73FB2FB0672E3 /* libPods-SEKL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SEKL.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		860E527B243535BD0028C01C /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		861118262424E2BA001B50DD /* RecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesView.swift; sourceTree = "<group>"; };
 		861118282424E405001B50DD /* oftenUsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oftenUsedView.swift; sourceTree = "<group>"; };
 		8611182A2424E544001B50DD /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
@@ -70,6 +72,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		860E527A2435359C0028C01C /* Feedback */ = {
+			isa = PBXGroup;
+			children = (
+				863AD4DE2434B16B00C85617 /* FeedbackView.swift */,
+				860E527B243535BD0028C01C /* Rating.swift */,
+			);
+			path = Feedback;
+			sourceTree = "<group>";
+		};
 		86B5676923C5446700399EF5 = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +102,7 @@
 		86B5677423C5446700399EF5 /* SEKL */ = {
 			isa = PBXGroup;
 			children = (
+				860E527A2435359C0028C01C /* Feedback */,
 				86C0F89E2406E99A007B997A /* EKL */,
 				86C0F89D2406E965007B997A /* Login */,
 				86B5677523C5446700399EF5 /* AppDelegate.swift */,
@@ -128,7 +140,6 @@
 			children = (
 				86C0F89F2406E9B9007B997A /* AddView.swift */,
 				86C0F8A12406EE13007B997A /* EKLComplete.swift */,
-				863AD4DE2434B16B00C85617 /* FeedbackView.swift */,
 				8611182A2424E544001B50DD /* ShareView.swift */,
 				861118282424E405001B50DD /* oftenUsedView.swift */,
 				861118262424E2BA001B50DD /* RecipesView.swift */,
@@ -255,6 +266,7 @@
 				86C0F8A02406E9B9007B997A /* AddView.swift in Sources */,
 				863D2AA82432007F00F6EC22 /* SessionStore.swift in Sources */,
 				86B5677A23C5446700399EF5 /* ContentView.swift in Sources */,
+				860E527C243535BD0028C01C /* Rating.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
