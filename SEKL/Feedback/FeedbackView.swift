@@ -9,6 +9,8 @@
 import SwiftUI
 
 struct FeedbackView: View {
+    @EnvironmentObject var rating : UserRating
+    
     var body: some View {
         NavigationView {
             ZStack{
@@ -29,6 +31,7 @@ struct FeedbackView: View {
 struct abfrageView: View {
         @State private var userName : String = ""
         @State private var feedBackText : String = ""
+        @EnvironmentObject var rating : UserRating
     
     var body: some View {
 
@@ -58,6 +61,7 @@ struct abfrageView: View {
                 Text("BEWERTUNG")
                     .font(.headline)
                     .multilineTextAlignment(.center)
+                Rating()
             }
             Button(action: {print("hi")}
             ){

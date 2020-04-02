@@ -8,8 +8,15 @@
 
 import SwiftUI
 
+class UserRating : ObservableObject {
+    @Published var rating = 4
+    init(rating: Int) {
+        self.rating = rating
+    }
+}
+
 struct Rating: View {
-    @Binding var rating : Int
+    @EnvironmentObject var userRating : UserRating
     
     var label = ""
     
@@ -28,19 +35,17 @@ struct Rating: View {
             }
             ForEach(1..<maximumRating + 1) { number in
                 self.image(for: number)
-                    .foregroundColor(number > self.rating ? self.offColor : self.onColor)
+                    .foregroundColor(number > self.userRating.rating ? self.offColor : self.onColor)
                     .onTapGesture {
-                        self.rating = number
+                        self.userRating.rating = number
                         print("Tap gesture!")
                 }
             }
-        }
-        
-        
+        }     
     }
     
     func image(for number: Int) -> Image {
-        if number > rating {
+        if number > userRating.rating {
             return offImage ?? onImage
         } else {
             return onImage
@@ -51,6 +56,6 @@ struct Rating: View {
 
 struct Rating_Previews: PreviewProvider {
     static var previews: some View {
-        Rating(rating: .constant(4))
+        Rating()
     }
 }
