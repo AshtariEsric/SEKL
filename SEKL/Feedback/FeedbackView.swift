@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct FeedbackView: View {
-    @EnvironmentObject var rating : UserRating
     
     var body: some View {
         NavigationView {
@@ -31,13 +30,12 @@ struct FeedbackView: View {
 struct abfrageView: View {
         @State private var userName : String = ""
         @State private var feedBackText : String = ""
-        @EnvironmentObject var rating : UserRating
+        @EnvironmentObject var userRating : UserRating
     
     var body: some View {
 
         VStack(alignment: .leading, spacing: 20){
             HStack{
-                
                 Image(systemName: "person")
                 Text("NAME:")
                     .font(.headline)
@@ -51,7 +49,7 @@ struct abfrageView: View {
                 Text("BESCHREIBUNG:")
                     .font(.headline)
                 Spacer()
-            }
+                }
             TextField("Beschreibe dein Problem", text: $feedBackText)
                 .frame(width: 200, height: 100)
                 .lineLimit(nil)
@@ -62,14 +60,14 @@ struct abfrageView: View {
                     .font(.headline)
                     .multilineTextAlignment(.center)
                 Rating()
-            }
-            Button(action: {print("hi")}
-            ){
+                }
+            
+            Button(action: {print("hi")})
+            {
                 Text("Absenden")
             }
             
         }.padding()
-        
     }
 }
 

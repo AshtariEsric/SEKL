@@ -19,12 +19,9 @@ struct Rating: View {
     @EnvironmentObject var userRating : UserRating
     
     var label = ""
-    
     var maximumRating = 5
-    
     var offImage: Image?
     var onImage = Image(systemName: "star.fill")
-    
     var offColor = Color.gray
     var onColor = Color.yellow
     
