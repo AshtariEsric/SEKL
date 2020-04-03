@@ -55,7 +55,7 @@ struct EKLComplete: View {
                             VStack(alignment: .leading){
                                 Text(item.beschreibung)
                                     .font(.headline)
-                                Text(String(item.menge) + item.unitType)
+                                Text(String(item.menge) + " \(item.unitType)")
                             }
                         }
                     }
@@ -67,7 +67,7 @@ struct EKLComplete: View {
                     .edgesIgnoringSafeArea(.all))
                     
             .navigationBarTitle("Einkaufsliste")
-                .navigationBarItems(trailing:
+            .navigationBarItems(trailing:
                     Button(action: {
                         self.showingAddExpense = true
                 }){

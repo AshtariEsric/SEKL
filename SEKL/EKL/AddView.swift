@@ -23,7 +23,7 @@ struct AddView: View {
     @State private var rezeptOrIngredients = "Default"
     static let receipts = ["Rezept", "Zutat"]
     
-    @State private var unitType = "Default"
+    @State private var unitType = "ml"
     static let units = ["ml", "liter", "gramm", "kg", "Stk"]
     
     @State private var type = "Default"

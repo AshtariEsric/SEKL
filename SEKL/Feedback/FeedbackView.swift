@@ -71,8 +71,8 @@ struct abfrageView: View {
     }
 }
 
-struct FeedbackView_Previews: PreviewProvider {
-    static var previews: some View {
-        FeedbackView()
-    }
-}
+//struct FeedbackView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        FeedbackView()
+//    }
+//}
