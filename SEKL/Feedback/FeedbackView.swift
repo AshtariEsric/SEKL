@@ -7,9 +7,9 @@
 //
 
 import SwiftUI
+import MessageUI
 
 struct FeedbackView: View {
-    
     var body: some View {
         NavigationView {
             ZStack{
@@ -28,9 +28,14 @@ struct FeedbackView: View {
     }
 
 struct abfrageView: View {
+    // Result Mail
+        @State var result: Result<MFMailComposeResult, Error>? = nil
+        @State var isShowingMailView = false
+    
         @State private var userName : String = ""
         @State private var feedBackText : String = ""
         @EnvironmentObject var userRating : UserRating
+    
     
     var body: some View {
 
@@ -62,17 +67,23 @@ struct abfrageView: View {
                 Rating()
                 }
             
-            Button(action: {print("hi")})
+            Button(action: {
+                self.isShowingMailView.toggle()
+            })
             {
                 Text("Absenden")
+            }.disabled(!MFMailComposeViewController.canSendMail())
+            .sheet(isPresented: $isShowingMailView)
+            {
+                    MailView(result: self.$result)
             }
             
         }.padding()
     }
 }
 
-//struct FeedbackView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        FeedbackView()
-//    }
-//}
+struct FeedbackView_Previews: PreviewProvider {
+    static var previews: some View {
+        FeedbackView()
+    }
+}

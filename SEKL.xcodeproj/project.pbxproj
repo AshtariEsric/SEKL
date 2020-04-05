@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		860E527C243535BD0028C01C /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E527B243535BD0028C01C /* Rating.swift */; };
+		860E527E243A7F890028C01C /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E527D243A7F890028C01C /* MailView.swift */; };
 		861118272424E2BA001B50DD /* RecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861118262424E2BA001B50DD /* RecipesView.swift */; };
 		861118292424E405001B50DD /* oftenUsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861118282424E405001B50DD /* oftenUsedView.swift */; };
 		8611182B2424E544001B50DD /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8611182A2424E544001B50DD /* ShareView.swift */; };
@@ -32,6 +33,7 @@
 		670E0B45EBE1E237721A4098 /* Pods-SEKL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SEKL.debug.xcconfig"; path = "Target Support Files/Pods-SEKL/Pods-SEKL.debug.xcconfig"; sourceTree = "<group>"; };
 		79D8909FD1A73FB2FB0672E3 /* libPods-SEKL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SEKL.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		860E527B243535BD0028C01C /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
+		860E527D243A7F890028C01C /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		861118262424E2BA001B50DD /* RecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesView.swift; sourceTree = "<group>"; };
 		861118282424E405001B50DD /* oftenUsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oftenUsedView.swift; sourceTree = "<group>"; };
 		8611182A2424E544001B50DD /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
@@ -75,6 +77,7 @@
 		860E527A2435359C0028C01C /* Feedback */ = {
 			isa = PBXGroup;
 			children = (
+				860E527D243A7F890028C01C /* MailView.swift */,
 				863AD4DE2434B16B00C85617 /* FeedbackView.swift */,
 				860E527B243535BD0028C01C /* Rating.swift */,
 			);
@@ -259,6 +262,7 @@
 				861118292424E405001B50DD /* oftenUsedView.swift in Sources */,
 				86C0F8A22406EE13007B997A /* EKLComplete.swift in Sources */,
 				861118272424E2BA001B50DD /* RecipesView.swift in Sources */,
+				860E527E243A7F890028C01C /* MailView.swift in Sources */,
 				863AD4DF2434B16B00C85617 /* FeedbackView.swift in Sources */,
 				86B5677823C5446700399EF5 /* SceneDelegate.swift in Sources */,
 				86210C7024238F0D0001D5E9 /* LoginFormView.swift in Sources */,
