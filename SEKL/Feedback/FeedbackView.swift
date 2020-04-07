@@ -1,16 +1,21 @@
-//
 //  FeedbackView.swift
 //  SEKL
 //
 //  Created by Dennis Hasselbusch on 01.04.20.
 //  Copyright © 2020 Dennis Hasselbusch. All rights reserved.
-//
 
 import SwiftUI
 import MessageUI
 
+class Feedback : ObservableObject {
+    @Published var feedBackText : String = ""
+    @Published var userName : String = ""
+}
 struct FeedbackView: View {
-    // Feedback Mail
+    //Feedback Mail
+    @EnvironmentObject var feedbackContent : Feedback
+    @EnvironmentObject var userRating : UserRating
+    
     @State var result: Result<MFMailComposeResult, Error>? = nil
     @State var isShowingMailView = false
     
@@ -29,9 +34,11 @@ struct FeedbackView: View {
                         }) {
                             Text("Absenden")
                         }
-                        .disabled(!MFMailComposeViewController.canSendMail())
-                        .sheet(isPresented: $isShowingMailView) {
+                    .disabled(!MFMailComposeViewController.canSendMail())
+                    .sheet(isPresented: $isShowingMailView) {
                             MailView(result: self.$result)
+                                .environmentObject(self.feedbackContent)
+                                .environmentObject(self.userRating)
                         }
                     Spacer()
                     }.navigationBarTitle("Feedback")
@@ -40,35 +47,33 @@ struct FeedbackView: View {
             }
         }
     }
-
-//Star Rating functionality
+    //Star Rating functionality
 struct abfrageView: View {
-        @State private var userName : String = ""
-        @State private var feedBackText : String = ""
-        @EnvironmentObject var userRating : UserRating
+    @State private var userName : String = ""
+    @State private var feedBackText : String = ""
+        
+    @EnvironmentObject var feedback : Feedback
+    @EnvironmentObject var userRating : UserRating
     
     var body: some View {
-
         VStack(alignment: .leading, spacing: 20){
             HStack{
                 Image(systemName: "person")
                 Text("NAME:")
                     .font(.headline)
                     .multilineTextAlignment(.center)
-                TextField("Dein Name", text: $userName)
+                TextField("Dein Name", text: $feedback.userName)
                     .multilineTextAlignment(.center)
                 }
-            
             HStack{
                 Image(systemName: "ellipses.bubble")
                 Text("BESCHREIBUNG:")
                     .font(.headline)
                 Spacer()
                 }
-            TextField("Beschreibe dein Problem", text: $feedBackText)
+            TextField("Beschreibe dein Problem", text: $feedback.feedBackText)
                 .frame(width: 200, height: 100)
                 .lineLimit(nil)
-            
             HStack{
                 Image(systemName: "star.lefthalf.fill")
                 Text("BEWERTUNG")
@@ -76,7 +81,6 @@ struct abfrageView: View {
                     .multilineTextAlignment(.center)
                 Rating()
                 }
-            
         }.padding()
     }
 }

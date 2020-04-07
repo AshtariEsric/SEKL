@@ -10,6 +10,7 @@ import SwiftUI
 
 class UserRating : ObservableObject {
     @Published var rating = 4
+    
     init(rating: Int) {
         self.rating = rating
     }
@@ -35,7 +36,6 @@ struct Rating: View {
                     .foregroundColor(number > self.userRating.rating ? self.offColor : self.onColor)
                     .onTapGesture {
                         self.userRating.rating = number
-                        print("Tap gesture!")
                 }
             }
         }     
