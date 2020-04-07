@@ -10,6 +10,10 @@ import SwiftUI
 import MessageUI
 
 struct FeedbackView: View {
+    // Feedback Mail
+    @State var result: Result<MFMailComposeResult, Error>? = nil
+    @State var isShowingMailView = false
+    
     var body: some View {
         NavigationView {
             ZStack{
@@ -20,6 +24,16 @@ struct FeedbackView: View {
                     Spacer()
                     abfrageView()
                     Spacer()
+                    Button(action: {
+                            self.isShowingMailView.toggle()
+                        }) {
+                            Text("Absenden")
+                        }
+                        .disabled(!MFMailComposeViewController.canSendMail())
+                        .sheet(isPresented: $isShowingMailView) {
+                            MailView(result: self.$result)
+                        }
+                    Spacer()
                     }.navigationBarTitle("Feedback")
                     .padding()
                 }
@@ -27,15 +41,11 @@ struct FeedbackView: View {
         }
     }
 
+//Star Rating functionality
 struct abfrageView: View {
-    // Result Mail
-        @State var result: Result<MFMailComposeResult, Error>? = nil
-        @State var isShowingMailView = false
-    
         @State private var userName : String = ""
         @State private var feedBackText : String = ""
         @EnvironmentObject var userRating : UserRating
-    
     
     var body: some View {
 
@@ -66,17 +76,6 @@ struct abfrageView: View {
                     .multilineTextAlignment(.center)
                 Rating()
                 }
-            
-            Button(action: {
-                self.isShowingMailView.toggle()
-            })
-            {
-                Text("Absenden")
-            }.disabled(!MFMailComposeViewController.canSendMail())
-            .sheet(isPresented: $isShowingMailView)
-            {
-                    MailView(result: self.$result)
-            }
             
         }.padding()
     }
