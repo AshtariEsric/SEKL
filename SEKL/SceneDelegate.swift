@@ -12,6 +12,7 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    var device = Device()
     var rating = UserRating(rating: 4)
     var feedbackContent = Feedback()
     
@@ -26,12 +27,23 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView.environmentObject(SessionStore()).environmentObject(UserRating(rating: 4)).environmentObject(Feedback()))
+            window.rootViewController = UIHostingController(rootView: contentView.environmentObject(SessionStore()).environmentObject(UserRating(rating: 4)).environmentObject(Feedback()).environmentObject(Device()))
             self.window = window
             window.makeKeyAndVisible()
+            let size = windowScene.screen.bounds.size
+            device.isLandscape = size.width > size.height
         }
     }
 
+    func windowScene(_ windowScene: UIWindowScene,
+        didUpdate previousCoordinateSpace: UICoordinateSpace,
+        interfaceOrientation previousInterfaceOrientation: UIInterfaceOrientation,
+        traitCollection previousTraitCollection: UITraitCollection) {
+
+        let size = windowScene.screen.bounds.size
+        device.isLandscape = size.width > size.height
+    }
+    
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
         // This occurs shortly after the scene enters the background, or when its session is discarded.

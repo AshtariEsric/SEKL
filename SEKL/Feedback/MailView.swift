@@ -55,10 +55,9 @@ struct MailView: UIViewControllerRepresentable {
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<MailView>) -> MFMailComposeViewController {
         let vc = MFMailComposeViewController()
-        vc.setToRecipients(["test@gmail.com"])
-        vc.setSubject("Feedback SEKL")
-        vc.setMessageBody("Hallo ... \(feedbackContent.userName)\nWie geht es dir? \(userRating.rating)", isHTML: true)
-//      vc.setMessageBody("Hallo \(Feedback.self.userName)", isHTML: true)
+        vc.setToRecipients(["buyddi@icloud.com"])
+        vc.setSubject("Feedback Buyddi von \(feedbackContent.userName)")
+        vc.setMessageBody("Ich bewerte die App mit \(userRating.rating) Sternen.\nFolgende Punkte könnten verbessert werden: \(feedbackContent.feedBackText)", isHTML: true)
         vc.mailComposeDelegate = context.coordinator
         return vc
     }

@@ -11,6 +11,7 @@ struct ContentView : View {
     //signInSuccess auf True, damit nicht permanent eingeloggt werden muss - muss bei release version zurück auf false geändert werden
     @State var signInSuccess = true
     @EnvironmentObject var session: SessionStore
+    @EnvironmentObject var device : Device
     
     func getUser(){
         session.listen()
@@ -19,9 +20,15 @@ struct ContentView : View {
     var body : some View {
         return Group {
             if signInSuccess {
-                EKLComplete()
+                if self.device.isLandscape {
+                    EKLComplete()
+                } else {
+                    EKLComplete()
+                }
             } else {
-                LoginFormView(signInSuccess : $signInSuccess)
+                if self.device.isLandscape{
+                    LoginFormView(signInSuccess : $signInSuccess)
+                }
             }
         }
     }

@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:/Users/Ashtari1993/Documents/Swift/Real Apps/EKL/SEKL/SEKL/Login/Device.swift">
+   </FileRef>
+   <FileRef
       location = "group:SEKL.xcodeproj">
    </FileRef>
    <FileRef

@@ -10,6 +10,7 @@ import MessageUI
 class Feedback : ObservableObject {
     @Published var feedBackText : String = ""
     @Published var userName : String = ""
+    
 }
 struct FeedbackView: View {
     //Feedback Mail
@@ -18,6 +19,7 @@ struct FeedbackView: View {
     
     @State var result: Result<MFMailComposeResult, Error>? = nil
     @State var isShowingMailView = false
+    
     
     var body: some View {
         NavigationView {
@@ -46,7 +48,7 @@ struct FeedbackView: View {
                 }
             }
         }
-    }
+}
     //Star Rating functionality
 struct abfrageView: View {
     @State private var userName : String = ""
