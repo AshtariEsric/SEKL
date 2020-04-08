@@ -35,14 +35,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
     }
 
-    func windowScene(_ windowScene: UIWindowScene,
-        didUpdate previousCoordinateSpace: UICoordinateSpace,
-        interfaceOrientation previousInterfaceOrientation: UIInterfaceOrientation,
-        traitCollection previousTraitCollection: UITraitCollection) {
-
-        let size = windowScene.screen.bounds.size
-        device.isLandscape = size.width > size.height
-    }
     
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
