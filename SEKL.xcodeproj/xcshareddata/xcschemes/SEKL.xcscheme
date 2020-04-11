@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "86B5677123C5446700399EF5"
-               BuildableName = "SEKL.app"
+               BuildableName = "BUYDDY.app"
                BlueprintName = "SEKL"
                ReferencedContainer = "container:SEKL.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "86B5677123C5446700399EF5"
-            BuildableName = "SEKL.app"
+            BuildableName = "BUYDDY.app"
             BlueprintName = "SEKL"
             ReferencedContainer = "container:SEKL.xcodeproj">
          </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "86B5677123C5446700399EF5"
-            BuildableName = "SEKL.app"
+            BuildableName = "BUYDDY.app"
             BlueprintName = "SEKL"
             ReferencedContainer = "container:SEKL.xcodeproj">
          </BuildableReference>
