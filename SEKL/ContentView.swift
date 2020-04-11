@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView : View {
     //signInSuccess auf True, damit nicht permanent eingeloggt werden muss - muss bei release version zurück auf false geändert werden
-    @State var signInSuccess = true
+    @State var signInSuccess = false
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var device : Device
     
@@ -20,19 +20,14 @@ struct ContentView : View {
     var body : some View {
         return Group {
             if signInSuccess {
-                if self.device.isLandscape {
-                    EKLComplete()
-                } else {
-                    EKLComplete()
-                }
+                EKLComplete()
             } else {
-                if self.device.isLandscape{
-                    LoginFormView(signInSuccess : $signInSuccess)
+                LoginFormView(signInSuccess : $signInSuccess)
                 }
             }
         }
-    }
 }
+
 
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
