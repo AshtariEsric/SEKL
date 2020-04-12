@@ -46,21 +46,13 @@ struct EKLComplete: View {
     @ObservedObject var expenses = Expense()
     @ObservedObject var receipe = Recipe()
     @State private var showingAddExpense = false
+    @State private var newArray : [Any] = []
     
     var body: some View {
         TabView {
             NavigationView {
                 List {
-                    ForEach(expenses.items){ item in
-                        HStack{
-                            VStack(alignment: .leading){
-                                Text(item.beschreibung)
-                                    .font(.headline)
-                                Text(String(item.menge) + " \(item.unitType)")
-                            }
-                        }
-                    }
-                .onDelete(perform: removeItems)
+                    self.listContent(newArray: Array(zip(expenses.items, receipe.items)))
                 }
                     .opacity(0.7)
                     .background(Image("Background")
@@ -82,7 +74,6 @@ struct EKLComplete: View {
                 Image(systemName: "bag")
                 Text("Buylist")
             }
-            
             RecipesView()
                     .tabItem {
                         Image(systemName: "doc.text")
@@ -105,13 +96,22 @@ struct EKLComplete: View {
                     }
         }
     }
-    
     func removeItems(at offsets: IndexSet){
         expenses.items.remove(atOffsets: offsets)
     }
-    
-    
+    func listContent(newArray: [Any]) -> some View {
+        ForEach(expenses.items, id: \.id){ item in    
+            HStack{
+                VStack(alignment: .leading){
+                    Text(item.beschreibung)
+                        .font(.headline)
+                    Text(String(item.menge) + " \(item.unitType)")
+                }
+            }
+        }.onDelete(perform: removeItems)
+    }
 }
+
 struct EKLComplete_Previews: PreviewProvider {
     static var previews: some View {
         EKLComplete()
