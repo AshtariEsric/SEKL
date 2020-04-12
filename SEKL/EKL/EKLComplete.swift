@@ -44,6 +44,7 @@ class Expense: ObservableObject {
 
 struct EKLComplete: View {
     @ObservedObject var expenses = Expense()
+    @ObservedObject var receipe = Recipe()
     @State private var showingAddExpense = false
     
     var body: some View {
@@ -74,7 +75,7 @@ struct EKLComplete: View {
                     Image(systemName: "plus")
                 })
                     .sheet(isPresented: $showingAddExpense){
-                        AddView(expense: self.expenses)
+                        AddView(expense: self.expenses, recipes: self.receipe)
                 }
             }
             .tabItem {

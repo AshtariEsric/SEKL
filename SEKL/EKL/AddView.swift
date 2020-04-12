@@ -8,18 +8,13 @@
 
 import SwiftUI
 
-class ingredientsList: ObservableObject{
-    @Published var ingredients = ["Butter", "Mais"]
-}
-
 struct AddView: View {
     @Environment(\.presentationMode) var presentationMode
-    //Beide Views teilen das selbe Array
     @ObservedObject var expense: Expense
-    @ObservedObject var ingredients = ingredientsList()
+    @ObservedObject var recipes : Recipe
+
     @State private var beschreibung = ""
     @State private var menge = ""
-    //@State private var price = ""
     @State private var rezeptOrIngredients = "Default"
     static let receipts = ["Rezept", "Zutat"]
     
@@ -41,7 +36,6 @@ struct AddView: View {
                     ForEach(Self.receipts, id: \.self)
                     {
                         Text($0)
-                        
                     }
                 }
                 if rezeptOrIngredients == "Zutat" {
@@ -78,14 +72,19 @@ struct AddView: View {
                     }
                 }
                 Button(action: {
-                    if let actualMenge = Int(self.menge){
-                        let item = ExpenseItem(beschreibung: self.beschreibung, menge: actualMenge, type: self.type,  unitType: self.unitType)
-                        self.expense.items.append(item)
-                        self.presentationMode.wrappedValue.dismiss()
-                        self.ingredients.ingredients.append(self.beschreibung)
-
-                        print(self.ingredients)
-                        
+                    if(self.rezeptOrIngredients == "Zutat"){
+                        if let actualMenge = Int(self.menge){
+                            let item = ExpenseItem(beschreibung: self.beschreibung, menge: actualMenge, type: self.type,  unitType: self.unitType)
+                            self.expense.items.append(item)
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
+                    }
+                    if(self.rezeptOrIngredients == "Rezept"){
+                        if let actualMenge = Int(self.menge){
+                            let item = RecipesItem(beschreibung: self.beschreibung, menge: actualMenge)
+                            self.recipes.items.append(item)
+                            self.presentationMode.wrappedValue.dismiss()
+                        }
                     }
                 }){
                     Text("Hinzufügen!")
@@ -98,6 +97,6 @@ struct AddView: View {
 
 struct AddThings_Previews: PreviewProvider {
     static var previews: some View {
-        AddView(expense: Expense())
+        AddView(expense: Expense(), recipes: Recipe())
     }
 }

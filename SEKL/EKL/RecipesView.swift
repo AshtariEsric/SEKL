@@ -10,32 +10,33 @@ import SwiftUI
 
 struct RecipesItem : Identifiable, Codable {
     let id = UUID()
-    var name : String
-    var expenseItem : ExpenseItem
+    let beschreibung : String
+    let menge : Int
+    //var expenseItem : ExpenseItem
 }
 
 class Recipe : ObservableObject {
-    @Published var ReItems = [RecipesItem]()
+    @Published var items = [RecipesItem]()
         {
             didSet {
                 let encoder = JSONEncoder()
                 if let encoded = try?
-                    encoder.encode(ReItems){
-                    UserDefaults.standard.set(encoded, forKey: "ReItems")
+                    encoder.encode(items){
+                    UserDefaults.standard.set(encoded, forKey: "Items")
                 }
             }
         }
     init() {
-        if let ReItems = UserDefaults.standard.data(forKey: "ReItems"){
+        if let ReItems = UserDefaults.standard.data(forKey: "Items"){
         let decoder = JSONDecoder()
         
         if let decoded = try?
             decoder.decode([RecipesItem].self, from: ReItems){
-            self.ReItems = decoded
+            self.items = decoded
             return
         }
     }
-    self.ReItems = []
+    self.items = []
     }
 }
 
@@ -47,10 +48,10 @@ struct RecipesView: View {
     var body: some View {
         NavigationView {
             List{
-                ForEach(recipes.ReItems) { ReItems in
+                ForEach(recipes.items) { item in
                     HStack{
                         VStack(alignment: .leading){
-                            Text(ReItems.name)
+                            Text(item.beschreibung)
                                 .font(.headline)
                             }
                         }
@@ -72,7 +73,7 @@ struct RecipesView: View {
     }
             
     func removeRecipes(at offsets: IndexSet){
-        recipes.ReItems.remove(atOffsets: offsets)
+        recipes.items.remove(atOffsets: offsets)
     }
 }
 struct RecipesView_Previews: PreviewProvider {
