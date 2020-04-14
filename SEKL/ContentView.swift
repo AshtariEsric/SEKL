@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView : View {
     //signInSuccess auf True, damit nicht permanent eingeloggt werden muss - muss bei release version zurück auf false geändert werden
-    @State var signInSuccess = false
+    @State var signInSuccess = true
     @EnvironmentObject var session: SessionStore
     @EnvironmentObject var device : Device
     
