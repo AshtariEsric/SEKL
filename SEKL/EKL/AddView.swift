@@ -24,8 +24,8 @@ struct AddView: View {
     @State private var type = "Default"
     static let types = ["Nahrungsmittel","Haushaltsartikel", "Getränke", "Obst und Gemüse", "Tiefkühl", "Drogerie und Kosmetik", "Baby und Kind", "Tierartikel", "Süßigkeiten und Salzigkeiten"]
         .sorted()
-    @State private var auswahl : Int = 0
     
+    @State private var auswahl : Int = 0
     @State private var person = ""
     var anzahlPers = [1,2,3,4,5,6,7,8,9,10]
     
@@ -74,18 +74,35 @@ struct AddView: View {
                     }
                 }
                 Button(action: {
-                    if(self.rezeptOrIngredients == "Zutat"){
-                        if let actualMenge = Int(self.menge){
-                            let item = ExpenseItem(beschreibung: self.beschreibung, menge: actualMenge, type: self.type,  unitType: self.unitType)
-                            self.expense.items.append(item)
+                    if self.rezeptOrIngredients == "Rezept" {
+                        if Int(self.menge) != nil{
+                            let item = RecipesItem(beschreibung: self.beschreibung, menge: Int(self.menge) ?? 0)
+                            self.recipes.items.append(item)
                             self.presentationMode.wrappedValue.dismiss()
-                            print("ZUTAT!!!")
+                            print("REZEPT")
                         }
                     }
-                }){
-                    Text("Hinzufügen!")
+                    if(self.rezeptOrIngredients == "Zutat"){
+                                if let actualMenge = Int(self.menge){
+                                    let item = ExpenseItem(beschreibung: self.beschreibung, menge: actualMenge, type: self.type,                                  unitType: self.unitType)
+                                    self.expense.items.append(item)
+                                    self.presentationMode.wrappedValue.dismiss()
+                                    print("ZUTAT!!!")
+                                }
+                            }
+                        })
+                    {
+                        if(rezeptOrIngredients == "Default"){
+                            Text("Hinzufügen von ...")
+                        }
+                        if(rezeptOrIngredients == "Zutat"){
+                            Text("Hinzufügen einer Zutat")
+                        }
+                        if(rezeptOrIngredients == "Rezept"){
+                            Text("Hinzufügen eines Rezepts")
+                        }
+                    }
                 }
-            }
             .navigationBarTitle("Hinzufügen von...")
         }
     }
