@@ -10,7 +10,6 @@
 		860E527C243535BD0028C01C /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E527B243535BD0028C01C /* Rating.swift */; };
 		860E5283243C7F6A0028C01C /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E5282243C7F6A0028C01C /* MailView.swift */; };
 		860E52A7243DB5800028C01C /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E52A6243DB5800028C01C /* TestView.swift */; };
-		860E52AB243DBAB70028C01C /* Device.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E52AA243DBAB70028C01C /* Device.swift */; };
 		861118272424E2BA001B50DD /* RecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861118262424E2BA001B50DD /* RecipesView.swift */; };
 		861118292424E405001B50DD /* oftenUsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861118282424E405001B50DD /* oftenUsedView.swift */; };
 		8611182B2424E544001B50DD /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8611182A2424E544001B50DD /* ShareView.swift */; };
@@ -37,7 +36,6 @@
 		860E527B243535BD0028C01C /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		860E5282243C7F6A0028C01C /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		860E52A6243DB5800028C01C /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
-		860E52AA243DBAB70028C01C /* Device.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Device.swift; path = "/Users/Ashtari1993/Documents/Swift/Real Apps/EKL/SEKL/SEKL/Login/Device.swift"; sourceTree = "<absolute>"; };
 		861118262424E2BA001B50DD /* RecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesView.swift; sourceTree = "<group>"; };
 		861118282424E405001B50DD /* oftenUsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oftenUsedView.swift; sourceTree = "<group>"; };
 		8611182A2424E544001B50DD /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 				86C0F89D2406E965007B997A /* Login */,
 				86B5677523C5446700399EF5 /* AppDelegate.swift */,
 				86B5677723C5446700399EF5 /* SceneDelegate.swift */,
-				860E52AA243DBAB70028C01C /* Device.swift */,
 				86B5677923C5446700399EF5 /* ContentView.swift */,
 				86B5677B23C5446B00399EF5 /* Assets.xcassets */,
 				86B5678023C5446B00399EF5 /* LaunchScreen.storyboard */,
@@ -270,7 +267,6 @@
 				861118272424E2BA001B50DD /* RecipesView.swift in Sources */,
 				860E5283243C7F6A0028C01C /* MailView.swift in Sources */,
 				860E52A7243DB5800028C01C /* TestView.swift in Sources */,
-				860E52AB243DBAB70028C01C /* Device.swift in Sources */,
 				863AD4DF2434B16B00C85617 /* FeedbackView.swift in Sources */,
 				86B5677823C5446700399EF5 /* SceneDelegate.swift in Sources */,
 				86210C7024238F0D0001D5E9 /* LoginFormView.swift in Sources */,

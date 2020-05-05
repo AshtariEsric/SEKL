@@ -11,10 +11,7 @@ import SwiftUI
 struct RecipesItem : Identifiable, Codable {
     let id = UUID()
     let beschreibung : String
-    let menge : Int
-    let type : String = ""
-    let unitType : String = ""
-    //var expenseItem : ExpenseItem
+    let mengePersonen : Int
 }
 
 class Recipe : ObservableObject {
@@ -44,39 +41,34 @@ class Recipe : ObservableObject {
 
 struct RecipesView: View {
     @State private var showingAddRecipe = false
+    @ObservedObject var expenses = Expense()
     @ObservedObject var recipes = Recipe()
     
     
     var body: some View {
         NavigationView {
-            List{
-                ForEach(recipes.items) { item in
+            List {
+                ForEach(recipes.items){ item in
                     HStack{
                         VStack(alignment: .leading){
                             Text(item.beschreibung)
                                 .font(.headline)
                         }
                     }
-                }
-                .onDelete(perform: removeRecipes)
+                }.onDelete(perform: removeRecipes)
             }
             .opacity(0.7)
             .background(Image("Background")
             .resizable()
             .edgesIgnoringSafeArea(.all))
             .navigationBarTitle("Rezepte")
-            .navigationBarItems(trailing:
-                Button(action: {
-                    self.showingAddRecipe = true
-                }){
-                    Image(systemName: "plus")
-            })
         }
     }
     
     func removeRecipes(at offsets: IndexSet){
         recipes.items.remove(atOffsets: offsets)
     }
+    
 }
 struct RecipesView_Previews: PreviewProvider {
     static var previews: some View {

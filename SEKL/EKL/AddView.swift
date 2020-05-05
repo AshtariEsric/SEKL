@@ -10,13 +10,15 @@ import SwiftUI
 
 struct AddView: View {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var expense: Expense
-    @ObservedObject var recipes : Recipe
+    @ObservedObject var expense : Expense
+    @ObservedObject var recipe : Recipe
     
     @State private var beschreibung = ""
     @State private var menge = ""
+    @State private var mengePersonen = ""
+    
     @State private var rezeptOrIngredients = "Default"
-    static let receipts = ["Rezept", "Zutat"]
+    static let subTitle = ["Rezept", "Zutat"]
     
     @State private var unitType = "ml"
     static let units = ["ml", "liter", "gramm", "kg", "Stk"]
@@ -27,14 +29,16 @@ struct AddView: View {
     
     @State private var auswahl : Int = 0
     @State private var person = ""
-    var anzahlPers = [1,2,3,4,5,6,7,8,9,10]
+    
+    @State private var defaultAnzahlPerson = 1
+    static let anzahlPers = [1,2,3,4,5,6,7,8,9,10]
     
     
     var body: some View {
         NavigationView {
             Form {
                 Picker("Rezept oder Zutat", selection: $rezeptOrIngredients){
-                    ForEach(Self.receipts, id: \.self)
+                    ForEach(Self.subTitle, id: \.self)
                     {
                         Text($0)
                     }
@@ -63,30 +67,37 @@ struct AddView: View {
                 {
                     TextField("Beschreibung", text: $beschreibung)
                     HStack{
-                        Text("Anzahl Personen");
-                        Picker(selection: $menge, label: Text("Anzahl Personen")){
-                            ForEach(0 ..< anzahlPers.count)
-                            {
-                                Text(String(self.anzahlPers[$0]))
-                            }
-                        }.pickerStyle(WheelPickerStyle())
-                            .frame(width: 100, height: 100)
+                        TextField("Anzahl Personen", text: $mengePersonen);
+//                      *** FEATURE ***
+//                        Picker(selection: $mengePersonen, label: Text("Anzahl Personen")){
+//                            ForEach(self.anzahlPers, id:\.self)
+//                            {
+//                                Text(String($0))
+//                            }
+//                        }.pickerStyle(WheelPickerStyle())
+//                            .frame(width: 100, height: 100)
                     }
                 }
                 Button(action: {
                     if self.rezeptOrIngredients == "Rezept" {
-                        if Int(self.menge) != nil{
-                            let item = RecipesItem(beschreibung: self.beschreibung, menge: Int(self.menge)!)
-                            self.recipes.items.append(item)
+                        if let actualMenge = Int(self.mengePersonen){
+                            let item = RecipesItem(beschreibung: self.beschreibung, mengePersonen: actualMenge)
+                            self.recipe.items.append(item)
                             self.presentationMode.wrappedValue.dismiss()
-                            print("REZEPT")
+                            print("REZEPT!!!")
+                            print(self.mengePersonen)
+                            print(self.beschreibung)
+                            
                         } else {
-                            print(self.recipes)
+                            print(self.recipe)
+                            print(self.mengePersonen)
+                            print(self.beschreibung)
                         }
+                       
                     }
                     if(self.rezeptOrIngredients == "Zutat"){
                         if let actualMenge = Int(self.menge){
-                            let item = ExpenseItem(beschreibung: self.beschreibung, menge: actualMenge, type: self.type,                                  unitType: self.unitType)
+                            let item = ExpenseItem(beschreibung: self.beschreibung, menge: actualMenge, type: self.type, unitType: self.unitType)
                             self.expense.items.append(item)
                             self.presentationMode.wrappedValue.dismiss()
                             print("ZUTAT!!!")
@@ -112,6 +123,6 @@ struct AddView: View {
 
 struct AddThings_Previews: PreviewProvider {
     static var previews: some View {
-        AddView(expense: Expense(), recipes: Recipe())
+        AddView(expense: Expense(), recipe: Recipe())
     }
 }

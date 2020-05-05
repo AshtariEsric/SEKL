@@ -44,15 +44,14 @@ class Expense: ObservableObject {
 
 struct EKLComplete: View {
     @ObservedObject var expenses = Expense()
-    @ObservedObject var receipe = Recipe()
+    @ObservedObject var recipe = Recipe()
     @State private var showingAddExpense = false
-    @State private var newArray : [Any] = []
     
     var body: some View {
         TabView {
             NavigationView {
                 List {
-                    self.listContent(newArray: Array(zip(expenses.items, receipe.items)))
+                    self.listContent(newArray: Array(zip(expenses.items, recipe.items)))
                 }
                 .opacity(0.7)
                 .background(Image("Background")
@@ -67,7 +66,7 @@ struct EKLComplete: View {
                         Image(systemName: "plus")
                 })
                     .sheet(isPresented: $showingAddExpense){
-                        AddView(expense: self.expenses, recipes: self.receipe)
+                        AddView(expense: self.expenses, recipe: self.recipe)
                 }
             }
             .tabItem {

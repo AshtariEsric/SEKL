@@ -12,7 +12,7 @@ import SwiftUI
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var device = Device()
+
     var rating = UserRating(rating: 4)
     var feedbackContent = Feedback()
     
@@ -27,11 +27,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use a UIHostingController as window root view controller.
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView.environmentObject(SessionStore()).environmentObject(UserRating(rating: 4)).environmentObject(Feedback()).environmentObject(Device()))
+            window.rootViewController = UIHostingController(rootView: contentView.environmentObject(SessionStore()).environmentObject(UserRating(rating: 4)).environmentObject(Feedback()))
             self.window = window
             window.makeKeyAndVisible()
-            let size = windowScene.screen.bounds.size
-            device.isLandscape = size.width > size.height
         }
     }
 
