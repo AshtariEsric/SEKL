@@ -12,31 +12,33 @@ struct RecipesItem : Identifiable, Codable {
     let id = UUID()
     let beschreibung : String
     let menge : Int
+    let type : String = ""
+    let unitType : String = ""
     //var expenseItem : ExpenseItem
 }
 
 class Recipe : ObservableObject {
     @Published var items = [RecipesItem]()
         {
-            didSet {
-                let encoder = JSONEncoder()
-                if let encoded = try?
-                    encoder.encode(items){
-                    UserDefaults.standard.set(encoded, forKey: "Items")
-                }
+        didSet {
+            let encoder = JSONEncoder()
+            if let encoded = try?
+                encoder.encode(items){
+                UserDefaults.standard.set(encoded, forKey: "Items")
             }
         }
+    }
     init() {
         if let ReItems = UserDefaults.standard.data(forKey: "Items"){
-        let decoder = JSONDecoder()
-        
-        if let decoded = try?
-            decoder.decode([RecipesItem].self, from: ReItems){
-            self.items = decoded
-            return
+            let decoder = JSONDecoder()
+            
+            if let decoded = try?
+                decoder.decode([RecipesItem].self, from: ReItems){
+                self.items = decoded
+                return
+            }
         }
-    }
-    self.items = []
+        self.items = []
     }
 }
 
@@ -53,25 +55,25 @@ struct RecipesView: View {
                         VStack(alignment: .leading){
                             Text(item.beschreibung)
                                 .font(.headline)
-                            }
                         }
                     }
-                    .onDelete(perform: removeRecipes)
                 }
-                .opacity(0.7)
-                .background(Image("Background")
-                .resizable()
-                .edgesIgnoringSafeArea(.all))
-                .navigationBarTitle("Rezepte")
-                .navigationBarItems(trailing:
-                               Button(action: {
-                                   self.showingAddRecipe = true
-                           }){
-                               Image(systemName: "plus")
-                           })
+                .onDelete(perform: removeRecipes)
+            }
+            .opacity(0.7)
+            .background(Image("Background")
+            .resizable()
+            .edgesIgnoringSafeArea(.all))
+            .navigationBarTitle("Rezepte")
+            .navigationBarItems(trailing:
+                Button(action: {
+                    self.showingAddRecipe = true
+                }){
+                    Image(systemName: "plus")
+            })
         }
     }
-            
+    
     func removeRecipes(at offsets: IndexSet){
         recipes.items.remove(atOffsets: offsets)
     }

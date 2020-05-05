@@ -16,7 +16,7 @@ struct LoginFormView: View {
     private var validate : Bool {
         !email.isEmpty && !password.isEmpty
     }
-       
+    
     @State private var password : String = ""
     @State private var email : String = ""
     @State private var uuid = UUID().uuidString
@@ -43,11 +43,11 @@ struct LoginFormView: View {
                 Image("Background")
                     .resizable()
                     .edgesIgnoringSafeArea(.all)
-                   
+                
                 VStack{
                     Spacer()
                     Spacer()
-            //Text Username + Passwort
+                    //Text Username + Passwort
                     HStack(alignment: .center){
                         Spacer()
                         Text("Username")
@@ -57,52 +57,52 @@ struct LoginFormView: View {
                         Text("Password")
                             .font(.headline)
                         Spacer()
-                        }
-            //TextField for insert name + password
+                    }
+                    //TextField for insert name + password
                     HStack{
                         TextField("Fill your name", text: $email)
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                                .scaledToFit()
+                            .scaledToFit()
                         Spacer()
                         SecureField("123456789", text:$password)
                             .scaledToFit()
                             .textFieldStyle(RoundedBorderTextFieldStyle())
-                            Spacer()
-                           }
                         Spacer()
-                        Spacer()
-            //Login Button with signIn Function
+                    }
+                    Spacer()
+                    Spacer()
+                    //Login Button with signIn Function
                     Button(action: signIn)
-                           {
-                            Text(loginDisplay)
-                                .foregroundColor(.white)
-                                .font(.headline)
-                                .frame(width: 150, height: 50, alignment: .center)
-                                .clipped()
-                                .background(validate ? Color.green : Color.red)
-                                .cornerRadius(80)
-                            }
-                            .alert(isPresented: $myAlertCredentials) {
-                                Alert(title: Text("Error!"), message: Text("Wrong Username or Password"), dismissButton: .default(Text("Ok")))
-                            }
+                    {
+                        Text(loginDisplay)
+                            .foregroundColor(.white)
+                            .font(.headline)
+                            .frame(width: 150, height: 50, alignment: .center)
+                            .clipped()
+                            .background(validate ? Color.green : Color.red)
+                            .cornerRadius(80)
+                    }
+                    .alert(isPresented: $myAlertCredentials) {
+                        Alert(title: Text("Error!"), message: Text("Wrong Username or Password"), dismissButton: .default(Text("Ok")))
+                    }
                     
-            //NavigationLink for registration
-                           NavigationLink(destination: RegistrationScreen())
-                               {
-                                HStack{
-                                    Text("Ich bin neu hier - ")
-                                        .font(.system(size: 14, weight: .light))
-                                        .foregroundColor(.primary)
-                                    Text("Registrieren!")
-                                        .font(.system(size:14, weight: .semibold))
-                                        .foregroundColor(Color.blue)
-                                   }
+                    //NavigationLink for registration
+                    NavigationLink(destination: RegistrationScreen())
+                    {
+                        HStack{
+                            Text("Ich bin neu hier - ")
+                                .font(.system(size: 14, weight: .light))
+                                .foregroundColor(.primary)
+                            Text("Registrieren!")
+                                .font(.system(size:14, weight: .semibold))
+                                .foregroundColor(Color.blue)
                         }
-                               
-                           }
-               }.navigationBarTitle("Willkommen!")
-           }
-       }
+                    }
+                    
+                }
+            }.navigationBarTitle("Willkommen!")
+        }
+    }
 }
 
 

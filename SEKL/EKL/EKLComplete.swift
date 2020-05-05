@@ -18,26 +18,26 @@ struct ExpenseItem : Identifiable, Codable {
 
 //ObservableObject können mehr als in einer View genutzt werden
 class Expense: ObservableObject {
-      @Published var items = [ExpenseItem]()
+    @Published var items = [ExpenseItem]()
         {
         didSet {
             let encoder = JSONEncoder()
             if let encoded = try?
                 encoder.encode(items){
                 UserDefaults.standard.set(encoded,forKey:"Items")
-                }
             }
         }
+    }
     init(){
         if let items =  UserDefaults.standard.data(forKey: "Items"){
             let decoder = JSONDecoder()
-        
-        if let decoded = try?
-            decoder.decode([ExpenseItem].self,from: items){
-            self.items = decoded
-            return
+            
+            if let decoded = try?
+                decoder.decode([ExpenseItem].self,from: items){
+                self.items = decoded
+                return
+            }
         }
-    }
         self.items = []
     }
 }
@@ -54,17 +54,17 @@ struct EKLComplete: View {
                 List {
                     self.listContent(newArray: Array(zip(expenses.items, receipe.items)))
                 }
-                    .opacity(0.7)
-                    .background(Image("Background")
-                    .resizable()
-                    .edgesIgnoringSafeArea(.all))
+                .opacity(0.7)
+                .background(Image("Background")
+                .resizable()
+                .edgesIgnoringSafeArea(.all))
                     
-            .navigationBarTitle("Einkaufsliste")
-            .navigationBarItems(trailing:
+                .navigationBarTitle("Einkaufsliste")
+                .navigationBarItems(trailing:
                     Button(action: {
                         self.showingAddExpense = true
-                }){
-                    Image(systemName: "plus")
+                    }){
+                        Image(systemName: "plus")
                 })
                     .sheet(isPresented: $showingAddExpense){
                         AddView(expense: self.expenses, recipes: self.receipe)
@@ -75,25 +75,25 @@ struct EKLComplete: View {
                 Text("Buylist")
             }
             RecipesView()
-                    .tabItem {
-                        Image(systemName: "doc.text")
-                        Text("Rezepte")
-                    }
+                .tabItem {
+                    Image(systemName: "doc.text")
+                    Text("Rezepte")
+            }
             FeedbackView()
                 .tabItem{
                     Image(systemName: "exclamationmark.bubble")
                     Text("Feedback")
             }
             oftenUsedView()
-                    .tabItem{
-                        Image(systemName: "repeat")
-                        Text("Häufig genutzt")
-                    }
+                .tabItem{
+                    Image(systemName: "repeat")
+                    Text("Häufig genutzt")
+            }
             ShareView()
-                    .tabItem{
-                        Image(systemName: "paperplane")
-                        Text("Teilen")
-                    }
+                .tabItem{
+                    Image(systemName: "paperplane")
+                    Text("Teilen")
+            }
         }
     }
     func removeItems(at offsets: IndexSet){

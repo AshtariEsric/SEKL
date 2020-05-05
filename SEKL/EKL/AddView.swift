@@ -12,7 +12,7 @@ struct AddView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var expense: Expense
     @ObservedObject var recipes : Recipe
-
+    
     @State private var beschreibung = ""
     @State private var menge = ""
     @State private var rezeptOrIngredients = "Default"
@@ -39,8 +39,8 @@ struct AddView: View {
                         Text($0)
                     }
                 }
+                
                 if rezeptOrIngredients == "Zutat" {
-                    
                     Picker("Type", selection: $type){
                         ForEach(Self.types, id:\.self){
                             Text($0)
@@ -54,8 +54,8 @@ struct AddView: View {
                             {
                                 Text($0)
                             }
-                    }.pickerStyle(WheelPickerStyle())
-                        .frame(width: 100, height: 100)
+                        }.pickerStyle(WheelPickerStyle())
+                            .frame(width: 100, height: 100)
                     }
                 }
                 
@@ -64,45 +64,47 @@ struct AddView: View {
                     TextField("Beschreibung", text: $beschreibung)
                     HStack{
                         Text("Anzahl Personen");
-                        Picker(selection: $person, label: Text("Anzahl Personen")){
+                        Picker(selection: $menge, label: Text("Anzahl Personen")){
                             ForEach(0 ..< anzahlPers.count)
                             {
-                                Text(String(self.anzahlPers[$0]) )
+                                Text(String(self.anzahlPers[$0]))
                             }
-                    }.pickerStyle(WheelPickerStyle())
-                        .frame(width: 100, height: 100)
+                        }.pickerStyle(WheelPickerStyle())
+                            .frame(width: 100, height: 100)
                     }
                 }
                 Button(action: {
                     if self.rezeptOrIngredients == "Rezept" {
                         if Int(self.menge) != nil{
-                            let item = RecipesItem(beschreibung: self.beschreibung, menge: Int(self.menge) ?? 0)
+                            let item = RecipesItem(beschreibung: self.beschreibung, menge: Int(self.menge)!)
                             self.recipes.items.append(item)
                             self.presentationMode.wrappedValue.dismiss()
                             print("REZEPT")
+                        } else {
+                            print(self.recipes)
                         }
                     }
                     if(self.rezeptOrIngredients == "Zutat"){
-                                if let actualMenge = Int(self.menge){
-                                    let item = ExpenseItem(beschreibung: self.beschreibung, menge: actualMenge, type: self.type,                                  unitType: self.unitType)
-                                    self.expense.items.append(item)
-                                    self.presentationMode.wrappedValue.dismiss()
-                                    print("ZUTAT!!!")
-                                }
-                            }
-                        })
-                    {
-                        if(rezeptOrIngredients == "Default"){
-                            Text("Hinzufügen von ...")
-                        }
-                        if(rezeptOrIngredients == "Zutat"){
-                            Text("Hinzufügen einer Zutat")
-                        }
-                        if(rezeptOrIngredients == "Rezept"){
-                            Text("Hinzufügen eines Rezepts")
+                        if let actualMenge = Int(self.menge){
+                            let item = ExpenseItem(beschreibung: self.beschreibung, menge: actualMenge, type: self.type,                                  unitType: self.unitType)
+                            self.expense.items.append(item)
+                            self.presentationMode.wrappedValue.dismiss()
+                            print("ZUTAT!!!")
                         }
                     }
+                })
+                {
+                    if(rezeptOrIngredients == "Default"){
+                        Text("Hinzufügen von ...")
+                    }
+                    if(rezeptOrIngredients == "Zutat"){
+                        Text("Hinzufügen einer Zutat")
+                    }
+                    if(rezeptOrIngredients == "Rezept"){
+                        Text("Hinzufügen eines Rezepts")
+                    }
                 }
+            }
             .navigationBarTitle("Hinzufügen von...")
         }
     }

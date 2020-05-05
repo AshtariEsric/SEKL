@@ -32,28 +32,28 @@ struct FeedbackView: View {
                     abfrageView()
                     Spacer()
                     Button(action: {
-                            self.isShowingMailView.toggle()
-                        }) {
-                            Text("Absenden")
-                        }
+                        self.isShowingMailView.toggle()
+                    }) {
+                        Text("Absenden")
+                    }
                     .disabled(!MFMailComposeViewController.canSendMail())
                     .sheet(isPresented: $isShowingMailView) {
-                            MailView(result: self.$result)
-                                .environmentObject(self.feedbackContent)
-                                .environmentObject(self.userRating)
-                        }
+                        MailView(result: self.$result)
+                            .environmentObject(self.feedbackContent)
+                            .environmentObject(self.userRating)
+                    }
                     Spacer()
-                    }.navigationBarTitle("Feedback")
+                }.navigationBarTitle("Feedback")
                     .padding()
-                }
             }
         }
+    }
 }
-    //Star Rating functionality
+//Star Rating functionality
 struct abfrageView: View {
     @State private var userName : String = ""
     @State private var feedBackText : String = ""
-        
+    
     @EnvironmentObject var feedback : Feedback
     @EnvironmentObject var userRating : UserRating
     
@@ -66,13 +66,13 @@ struct abfrageView: View {
                     .multilineTextAlignment(.center)
                 TextField("Dein Name", text: $feedback.userName)
                     .multilineTextAlignment(.center)
-                }
+            }
             HStack{
                 Image(systemName: "ellipses.bubble")
                 Text("BESCHREIBUNG:")
                     .font(.headline)
                 Spacer()
-                }
+            }
             TextField("Beschreibe dein Problem", text: $feedback.feedBackText)
                 .frame(width: 200, height: 100)
                 .lineLimit(nil)
@@ -82,7 +82,7 @@ struct abfrageView: View {
                     .font(.headline)
                     .multilineTextAlignment(.center)
                 Rating()
-                }
+            }
         }.padding()
     }
 }

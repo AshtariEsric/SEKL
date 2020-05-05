@@ -32,15 +32,15 @@ struct RegistrationScreen : View {
         session.signUp(email: email, password: password){
             (result, error) in
             if let error = error {
-                    if self.password.count < 6 {
-                        self.alertChoice = .first
-                        self.errorMeldung = true
-                    } else {
-                        self.alertChoice = .second
-                        self.errorMeldung = true
-                    }
-                    self.error = error.localizedDescription
-                    print(self.errorMeldung)
+                if self.password.count < 6 {
+                    self.alertChoice = .first
+                    self.errorMeldung = true
+                } else {
+                    self.alertChoice = .second
+                    self.errorMeldung = true
+                }
+                self.error = error.localizedDescription
+                print(self.errorMeldung)
             } else {
                 self.errorMeldung = true
                 self.alertChoice = .third
@@ -50,44 +50,44 @@ struct RegistrationScreen : View {
         }
     }
     
-    var body: some View {
+    var body: some View {   
         //NavigationView {
-            ZStack{
-                Image("Background")
+        ZStack{
+            Image("Background")
                 .resizable()
                 .edgesIgnoringSafeArea(.all)
-               
-                VStack{
+            
+            VStack{
+                
+                Text("Email")
+                    .font(.headline)
+                TextField("Email", text: $email)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                Text("Passwort")
+                    .font(.headline)
+                SecureField("Passwort", text: $password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                
+                
+                Button(action: signUp){
+                    Text("Registrieren!")
                     
-                    Text("Email")
-                        .font(.headline)
-                    TextField("Email", text: $email)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-
-                    Text("Passwort")
-                        .font(.headline)
-                    SecureField("Passwort", text: $password)
-                        .textFieldStyle(RoundedBorderTextFieldStyle())
-
-                    
-                    Button(action: signUp){
-                        Text("Registrieren!")
-                        
-                    }.alert(isPresented: $errorMeldung){
-                        switch alertChoice {
-                        case .first:
-                            return Alert(title: Text("Error!"), message: Text("Passwort muss mehr als 6 Ziffern haben"), dismissButton: .default(Text("Ok")))
-                        case .second:
-                            return Alert(title: Text("Error!"), message: Text("Die Email Adresse ist nicht korrekt. Nutze folgendes Format: Text@provider.de"), dismissButton: .default(Text("Ok")))
-                        case .third:
-                            return Alert(title: Text("Finish!"), message: Text("Du bist jetzt registriert. Bitte logge dich ein!"), dismissButton: .default(Text("Ok")))
-                        }
+                }.alert(isPresented: $errorMeldung){
+                    switch alertChoice {
+                    case .first:
+                        return Alert(title: Text("Error!"), message: Text("Passwort muss mehr als 6 Ziffern haben"), dismissButton: .default(Text("Ok")))
+                    case .second:
+                        return Alert(title: Text("Error!"), message: Text("Die Email Adresse ist nicht korrekt. Nutze folgendes Format: Text@provider.de"), dismissButton: .default(Text("Ok")))
+                    case .third:
+                        return Alert(title: Text("Finish!"), message: Text("Du bist jetzt registriert. Bitte logge dich ein!"), dismissButton: .default(Text("Ok")))
                     }
-                }.navigationBarTitle("Registration", displayMode: .inline)
+                }
+            }.navigationBarTitle("Registration", displayMode: .inline)
                 .padding()
-            }
         }
     }
+}
 //}
 #if DEBUG
 struct RegistrationScreen_Previews : PreviewProvider {
