@@ -14,6 +14,7 @@ struct ExpenseItem : Identifiable, Codable {
     let menge : Int
     let type : String
     let unitType : String
+    let itemImage : String
 }
 
 //ObservableObject können mehr als in einer View genutzt werden
@@ -44,14 +45,14 @@ class Expense: ObservableObject {
 
 struct EKLComplete: View {
     @ObservedObject var expenses = Expense()
-    @ObservedObject var recipe = Recipe()
+    @EnvironmentObject var recipeBook : Recipe
     @State private var showingAddExpense = false
     
     var body: some View {
         TabView {
             NavigationView {
                 List {
-                    self.listContent(newArray: Array(zip(expenses.items, recipe.items)))
+                    self.listContent(newArray: Array(zip(expenses.items, recipeBook.items)))
                 }
                 .opacity(0.7)
                 .background(Image("Background")
@@ -66,7 +67,7 @@ struct EKLComplete: View {
                         Image(systemName: "plus")
                 })
                     .sheet(isPresented: $showingAddExpense){
-                        AddView(expense: self.expenses, recipe: self.recipe)
+                        AddView(expense: self.expenses, recipe: self.recipeBook)
                 }
             }
             .tabItem {
@@ -106,6 +107,7 @@ struct EKLComplete: View {
                         .font(.headline)
                     Text(String(item.menge) + " \(item.unitType)")
                 }
+                Image(item.itemImage)
             }
         }.onDelete(perform: removeItems)
     }

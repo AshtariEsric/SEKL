@@ -15,7 +15,7 @@ class Feedback : ObservableObject {
 struct FeedbackView: View {
     //Feedback Mail
     @EnvironmentObject var feedbackContent : Feedback
-    @EnvironmentObject var userRating : UserRating
+    @EnvironmentObject var rating : UserRating
     
     @State var result: Result<MFMailComposeResult, Error>? = nil
     @State var isShowingMailView = false
@@ -40,7 +40,7 @@ struct FeedbackView: View {
                     .sheet(isPresented: $isShowingMailView) {
                         MailView(result: self.$result)
                             .environmentObject(self.feedbackContent)
-                            .environmentObject(self.userRating)
+                            .environmentObject(self.rating)
                     }
                     Spacer()
                 }.navigationBarTitle("Feedback")
@@ -54,8 +54,8 @@ struct abfrageView: View {
     @State private var userName : String = ""
     @State private var feedBackText : String = ""
     
-    @EnvironmentObject var feedback : Feedback
-    @EnvironmentObject var userRating : UserRating
+    @EnvironmentObject var feedbackContent : Feedback
+    @EnvironmentObject var rating : UserRating
     
     var body: some View {
         VStack(alignment: .leading, spacing: 20){
@@ -64,7 +64,7 @@ struct abfrageView: View {
                 Text("NAME:")
                     .font(.headline)
                     .multilineTextAlignment(.center)
-                TextField("Dein Name", text: $feedback.userName)
+                TextField("Dein Name", text: $feedbackContent.userName)
                     .multilineTextAlignment(.center)
             }
             HStack{
@@ -73,7 +73,7 @@ struct abfrageView: View {
                     .font(.headline)
                 Spacer()
             }
-            TextField("Beschreibe dein Problem", text: $feedback.feedBackText)
+            TextField("Beschreibe dein Problem", text: $feedbackContent.feedBackText)
                 .frame(width: 200, height: 100)
                 .lineLimit(nil)
             HStack{

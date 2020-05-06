@@ -18,7 +18,7 @@ import MessageUI
 
 struct MailView: UIViewControllerRepresentable {
     @EnvironmentObject var feedbackContent : Feedback
-    @EnvironmentObject var userRating : UserRating
+    @EnvironmentObject var rating : UserRating
     
     @Environment(\.presentationMode) var presentation
     @Binding var result: Result<MFMailComposeResult, Error>?
@@ -57,7 +57,7 @@ struct MailView: UIViewControllerRepresentable {
         let vc = MFMailComposeViewController()
         vc.setToRecipients(["buyddi@icloud.com"])
         vc.setSubject("Feedback BUYDDI von \(feedbackContent.userName)")
-        vc.setMessageBody("Ich bewerte die App mit \(userRating.rating) Sternen.\nFolgende Punkte könnten verbessert werden: \(feedbackContent.feedBackText)", isHTML: true)
+        vc.setMessageBody("Ich bewerte die App mit \(rating.rating) Sternen.\nFolgende Punkte könnten verbessert werden: \(feedbackContent.feedBackText)", isHTML: true)
         vc.mailComposeDelegate = context.coordinator
         return vc
     }

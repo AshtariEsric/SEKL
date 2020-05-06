@@ -33,6 +33,24 @@ struct AddView: View {
     @State private var defaultAnzahlPerson = 1
     static let anzahlPers = [1,2,3,4,5,6,7,8,9,10]
     
+    @State private var itemImage = ""
+    
+    func myImage() -> some View {
+        switch type {
+        case "Nahrungsmittel": itemImage = "Drogerie"
+        case "Haushaltsartikel": itemImage = "Drogerie"
+        case "Getränke": itemImage = "Drogerie"
+        case "Obst und Gemüse": itemImage = "Drogerie"
+        case "Tiefkühl": itemImage = "Drogerie"
+        case "Drogerie und Kosmetik": itemImage = "Drogerie"
+        case "Baby und Kind": itemImage = "Drogerie"
+        case "Tierartikel": itemImage = "Drogerie"
+        case "Süßigkeiten und Salzigkeiten": itemImage = "Drogerie"
+            
+        default: itemImage = "empty"
+        }
+        return Image(itemImage)
+    }
     
     var body: some View {
         NavigationView {
@@ -59,8 +77,10 @@ struct AddView: View {
                                 Text($0)
                             }
                         }.pickerStyle(WheelPickerStyle())
-                            .frame(width: 100, height: 100)
+                        .frame(width: 100, height: 100)
+                        myImage()
                     }
+                    
                 }
                 
                 if rezeptOrIngredients == "Rezept"
@@ -85,19 +105,18 @@ struct AddView: View {
                             self.recipe.items.append(item)
                             self.presentationMode.wrappedValue.dismiss()
                             print("REZEPT!!!")
-                            print(self.mengePersonen)
-                            print(self.beschreibung)
+                            print(item.mengePersonen)
+                            print(item.beschreibung)
                             
                         } else {
                             print(self.recipe)
                             print(self.mengePersonen)
                             print(self.beschreibung)
                         }
-                       
                     }
                     if(self.rezeptOrIngredients == "Zutat"){
                         if let actualMenge = Int(self.menge){
-                            let item = ExpenseItem(beschreibung: self.beschreibung, menge: actualMenge, type: self.type, unitType: self.unitType)
+                            let item = ExpenseItem(beschreibung: self.beschreibung, menge: actualMenge, type: self.type, unitType: self.unitType, itemImage: self.type)
                             self.expense.items.append(item)
                             self.presentationMode.wrappedValue.dismiss()
                             print("ZUTAT!!!")

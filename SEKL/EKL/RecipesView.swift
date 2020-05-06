@@ -42,13 +42,13 @@ class Recipe : ObservableObject {
 struct RecipesView: View {
     @State private var showingAddRecipe = false
     @ObservedObject var expenses = Expense()
-    @ObservedObject var recipes = Recipe()
+    @EnvironmentObject var recipeBook : Recipe
     
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(recipes.items){ item in
+                ForEach(recipeBook.items){ item in
                     HStack{
                         VStack(alignment: .leading){
                             Text(item.beschreibung)
@@ -66,7 +66,7 @@ struct RecipesView: View {
     }
     
     func removeRecipes(at offsets: IndexSet){
-        recipes.items.remove(atOffsets: offsets)
+        recipeBook.items.remove(atOffsets: offsets)
     }
     
 }

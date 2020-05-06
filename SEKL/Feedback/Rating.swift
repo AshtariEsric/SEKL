@@ -17,7 +17,7 @@ class UserRating : ObservableObject {
 }
 
 struct Rating: View {
-    @EnvironmentObject var userRating : UserRating
+    @EnvironmentObject var rating : UserRating
     
     var label = ""
     var maximumRating = 5
@@ -33,16 +33,16 @@ struct Rating: View {
             }
             ForEach(1..<maximumRating + 1) { number in
                 self.image(for: number)
-                    .foregroundColor(number > self.userRating.rating ? self.offColor : self.onColor)
+                    .foregroundColor(number > self.rating.rating ? self.offColor : self.onColor)
                     .onTapGesture {
-                        self.userRating.rating = number
+                        self.rating.rating = number
                 }
             }
         }     
     }
     
     func image(for number: Int) -> Image {
-        if number > userRating.rating {
+        if number > rating.rating {
             return offImage ?? onImage
         } else {
             return onImage
