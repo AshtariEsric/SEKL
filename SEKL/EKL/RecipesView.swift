@@ -56,7 +56,7 @@ struct RecipesView: View {
                         }
                     }
                 }.onDelete(perform: removeRecipes)
-            }
+            }.onAppear(perform: {UITableView.appearance().separatorStyle = .none})
             .opacity(0.7)
             .background(Image("Background")
             .resizable()

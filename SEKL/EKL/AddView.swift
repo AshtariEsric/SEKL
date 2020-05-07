@@ -37,16 +37,16 @@ struct AddView: View {
     
     func myImage() -> some View {
         switch type {
-        case "Nahrungsmittel": itemImage = "Drogerie"
-        case "Haushaltsartikel": itemImage = "Drogerie"
-        case "Getränke": itemImage = "Drogerie"
-        case "Obst und Gemüse": itemImage = "Drogerie"
-        case "Tiefkühl": itemImage = "Drogerie"
-        case "Drogerie und Kosmetik": itemImage = "Drogerie"
-        case "Baby und Kind": itemImage = "Drogerie"
-        case "Tierartikel": itemImage = "Drogerie"
-        case "Süßigkeiten und Salzigkeiten": itemImage = "Drogerie"
-            
+            case "Nahrungsmittel": itemImage = "Nahrungsmittel" //x
+            case "Haushaltsartikel": itemImage = "Haushaltsartikel" //x
+            case "Getränke": itemImage = "Getränke" //x
+            case "Obst und Gemüse": itemImage = "Obst und Gemüse" //x
+            case "Tiefkühl": itemImage = "Tiefkühl" //X
+            case "Drogerie und Kosmetik": itemImage = "Drogerie"
+            case "Baby und Kind": itemImage = "Baby und Kind" //x
+            case "Tierartikel": itemImage = "Tierartikel" //x
+            case "Süßigkeiten und Salzigkeiten": itemImage = "Süßigkeiten und Salzigkeiten" //x
+                
         default: itemImage = "empty"
         }
         return Image(itemImage)

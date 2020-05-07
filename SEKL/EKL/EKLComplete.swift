@@ -53,7 +53,7 @@ struct EKLComplete: View {
             NavigationView {
                 List {
                     self.listContent(newArray: Array(zip(expenses.items, recipeBook.items)))
-                }
+                }.onAppear(perform: {UITableView.appearance().separatorStyle = .none})
                 .opacity(0.7)
                 .background(Image("Background")
                 .resizable()
@@ -107,7 +107,10 @@ struct EKLComplete: View {
                         .font(.headline)
                     Text(String(item.menge) + " \(item.unitType)")
                 }
+                Spacer()
                 Image(item.itemImage)
+                .resizable()
+                    .frame(width: 30, height: 30)
             }
         }.onDelete(perform: removeItems)
     }
