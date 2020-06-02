@@ -46,8 +46,8 @@ struct AddView: View {
             case "Baby und Kind": itemImage = "Baby und Kind" //x
             case "Tierartikel": itemImage = "Tierartikel" //x
             case "Süßigkeiten und Salzigkeiten": itemImage = "Süßigkeiten und Salzigkeiten" //x
-                
-        default: itemImage = "empty"
+        default:
+            print("err")
         }
         return Image(itemImage)
     }
@@ -106,12 +106,7 @@ struct AddView: View {
                             self.presentationMode.wrappedValue.dismiss()
                             print("REZEPT!!!")
                             print(item.mengePersonen)
-                            print(item.beschreibung)
-                            
-                        } else {
-                            print(self.recipe)
-                            print(self.mengePersonen)
-                            print(self.beschreibung)
+                            print(item.beschreibung)   
                         }
                     }
                     if(self.rezeptOrIngredients == "Zutat"){

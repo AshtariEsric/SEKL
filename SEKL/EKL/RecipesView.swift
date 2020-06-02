@@ -43,7 +43,7 @@ struct RecipesView: View {
     @State private var showingAddRecipe = false
     @ObservedObject var expenses = Expense()
     @EnvironmentObject var recipeBook : Recipe
-    
+    @State private var showingAddExpense = false
     
     var body: some View {
         NavigationView {
@@ -62,13 +62,21 @@ struct RecipesView: View {
             .resizable()
             .edgesIgnoringSafeArea(.all))
             .navigationBarTitle("Rezepte")
+            .navigationBarItems(trailing:
+                    Button(action: {
+                        self.showingAddExpense = true
+                    }){
+                        Image(systemName: "plus")
+                })
+                    .sheet(isPresented: $showingAddExpense){
+                        AddRecipe(expense: self.expenses, recipe: self.recipeBook)
+                }
+            
+            }
         }
-    }
-    
     func removeRecipes(at offsets: IndexSet){
         recipeBook.items.remove(atOffsets: offsets)
     }
-    
 }
 struct RecipesView_Previews: PreviewProvider {
     static var previews: some View {
