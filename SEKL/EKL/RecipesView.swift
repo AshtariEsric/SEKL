@@ -42,13 +42,12 @@ class Recipe : ObservableObject {
 struct RecipesView: View {
     @State private var showingAddRecipe = false
     @ObservedObject var expenses = Expense()
-    @EnvironmentObject var recipeBook : Recipe
-    
+    @EnvironmentObject var recipe : Recipe
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(recipeBook.items){ item in
+                ForEach(recipe.items){ item in
                     HStack{
                         VStack(alignment: .leading){
                             Text(item.beschreibung)
@@ -62,11 +61,20 @@ struct RecipesView: View {
             .resizable()
             .edgesIgnoringSafeArea(.all))
             .navigationBarTitle("Rezepte")
+            .navigationBarItems(trailing:
+                                    Button(action: {
+                                        self.showingAddRecipe = true
+                                    }){
+                                        Image(systemName: "book.fill")
+                                    })
+                                    .sheet(isPresented: $showingAddRecipe){
+                                        AddRecipe(recipe: self.recipe)
+                                    }
         }
     }
     
     func removeRecipes(at offsets: IndexSet){
-        recipeBook.items.remove(atOffsets: offsets)
+        recipe.items.remove(atOffsets: offsets)
     }
     
 }

@@ -86,7 +86,6 @@ struct AddView: View {
                 if rezeptOrIngredients == "Rezept"
                 {
                     TextField("Beschreibung", text: $beschreibung)
-                    HStack{
                         TextField("Anzahl Personen", text: $mengePersonen);
 //                      *** FEATURE ***
 //                        Picker(selection: $mengePersonen, label: Text("Anzahl Personen")){
@@ -96,7 +95,7 @@ struct AddView: View {
 //                            }
 //                        }.pickerStyle(WheelPickerStyle())
 //                            .frame(width: 100, height: 100)
-                    }
+                    
                 }
                 Button(action: {
                     if self.rezeptOrIngredients == "Rezept" {

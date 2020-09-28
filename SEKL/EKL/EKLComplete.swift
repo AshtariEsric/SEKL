@@ -64,7 +64,8 @@ struct EKLComplete: View {
                     Button(action: {
                         self.showingAddExpense = true
                     }){
-                        Image(systemName: "plus")
+                            Image(systemName: "cart.badge.plus")
+                        
                 })
                     .sheet(isPresented: $showingAddExpense){
                         AddView(expense: self.expenses, recipe: self.recipeBook)
@@ -77,22 +78,24 @@ struct EKLComplete: View {
             RecipesView()
                 .tabItem {
                     Image(systemName: "doc.text")
-                    Text("Rezepte")
+                    Text("Bibliothek")
             }
             FeedbackView()
                 .tabItem{
                     Image(systemName: "exclamationmark.bubble")
                     Text("Feedback")
             }
-            oftenUsedView()
+           /*
+            Häufig genutzt View - ggf. nachträglich?
+             oftenUsedView()
                 .tabItem{
                     Image(systemName: "repeat")
                     Text("Häufig genutzt")
-            }
+            }*/
             ShareView()
                 .tabItem{
                     Image(systemName: "paperplane")
-                    Text("Teilen")
+                    Text("Rezepte teilen")
             }
         }
     }
