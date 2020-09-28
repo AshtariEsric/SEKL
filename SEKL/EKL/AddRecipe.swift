@@ -16,8 +16,11 @@ struct AddRecipe: View
     @State private var beschreibungRezept = ""
     @State private var zutatRezept = ""
     @State private var anzahlPersonenRezept = ""
-    
+    @State private var unitType = "ml"
     @State private var recipeArray = [""]
+    @State private var zutatAnzahl = ""
+    
+    static let units = ["ml", "liter", "gramm", "kg", "Stk"]
     
     var body : some View
     {
@@ -28,26 +31,41 @@ struct AddRecipe: View
                     TextField("Beschreibung", text: $beschreibungRezept)
                     HStack{
                         TextField("Anzahl Personen", text: $anzahlPersonenRezept)
-                        Spacer()
                         Text("Personen")
+                        Spacer()
                     }
                     HStack{
-                        Button(action: {
-                            recipeArray.append(zutatRezept)
-                            zutatRezept = ""
-                        }){
-                            Image(systemName: "plus.circle")
-                        }
                         TextField("Zutat", text: $zutatRezept)
                     }
+                    HStack{
+                        TextField("Anzahl", text: $zutatAnzahl)
+                        Picker(selection: $unitType, label: Text("")){
+                            ForEach(Self.units, id:\.self)
+                            {
+                                Text($0)
+                            }
+                        }
+                        .frame(width: 100, height: 50)
+                    }
+                    Button(action: {
+                        recipeArray.append(zutatRezept)
+                        zutatRezept = ""
+                        zutatAnzahl = ""
+                    }){
+                        Image(systemName: "plus.circle")
+                    }
+                    
                 }
                 .edgesIgnoringSafeArea(.all)
                 .padding(.leading)
-                List {
+                Spacer()
+                Form {
                     Text("\(beschreibungRezept)")
                         .font(.headline)
-                    Text("Für \(anzahlPersonenRezept) Personen")
-                        .font(.subheadline)
+                    if !anzahlPersonenRezept.isEmpty{
+                        Text("Für \(anzahlPersonenRezept) Personen")
+                            .font(.subheadline)
+                    }
                     VStack(alignment: .leading){
                         //TODO: padding is not working!
                         List(recipeArray, id: \.self){
@@ -59,6 +77,13 @@ struct AddRecipe: View
                     }
                 }
                 Spacer()
+                Button(action:{
+                    print("Finish")
+                }){
+                    Text("Rezept abschließen!")
+                        .overlay(RoundedRectangle(cornerRadius: 40)
+                                    .stroke(Color.green, lineWidth: 2))
+                }
             }.navigationBarTitle("Rezept hinzufügen")
         }
     }
