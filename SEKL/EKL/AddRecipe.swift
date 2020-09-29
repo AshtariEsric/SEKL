@@ -14,11 +14,12 @@ struct AddRecipe: View
     @ObservedObject var recipe : Recipe
     
     @State private var beschreibungRezept = ""
-    @State private var zutatRezept = ""
     @State private var anzahlPersonenRezept = ""
-    @State private var unitType = "ml"
-    @State private var recipeArray = [""]
+    @State private var recipeArray = [rezeptZutat]()
+    @State private var zutatRezept = ""
     @State private var zutatAnzahl = ""
+    @State private var unitType = "ml"
+    @State private var myIntZutatAnzahl = 0
     
     static let units = ["ml", "liter", "gramm", "kg", "Stk"]
     
@@ -39,6 +40,7 @@ struct AddRecipe: View
                     }
                     HStack{
                         TextField("Anzahl", text: $zutatAnzahl)
+                            .keyboardType(.numberPad)
                         Picker(selection: $unitType, label: Text("")){
                             ForEach(Self.units, id:\.self)
                             {
@@ -48,9 +50,20 @@ struct AddRecipe: View
                         .frame(width: 100, height: 50)
                     }
                     Button(action: {
-                        recipeArray.append(zutatRezept)
-                        zutatRezept = ""
-                        zutatAnzahl = ""
+                        
+                        if let myZutatAnzahl = NumberFormatter().number(from: zutatAnzahl)
+                        {
+                            myIntZutatAnzahl = myZutatAnzahl.intValue
+                            var addZutat = rezeptZutat(zutat: zutatRezept, anzahl: myIntZutatAnzahl)
+                            recipeArray.append(addZutat)
+                            
+                            //Clear two TextFields
+                            zutatRezept = ""
+                            zutatAnzahl = ""
+                        } else
+                        {
+                            
+                        }
                     }){
                         Image(systemName: "plus.circle")
                     }
@@ -59,6 +72,7 @@ struct AddRecipe: View
                 .edgesIgnoringSafeArea(.all)
                 .padding(.leading)
                 Spacer()
+                
                 Form {
                     Text("\(beschreibungRezept)")
                         .font(.headline)
@@ -75,7 +89,7 @@ struct AddRecipe: View
                         .padding(.leading)
                         .edgesIgnoringSafeArea(.all)
                     }
-                }
+                }.background(Color.gray)
                 Spacer()
                 Button(action:{
                     print("Finish")
@@ -85,6 +99,23 @@ struct AddRecipe: View
                                     .stroke(Color.green, lineWidth: 2))
                 }
             }.navigationBarTitle("Rezept hinzufügen")
+        }
+    }
+    
+    func combineRecipeElements(zutatAnzahl : Int, zutatRezept: String) -> rezeptZutat
+    {
+        
+    }
+    
+    class rezeptZutat
+    {
+        var zutat : String
+        var anzahl : Int
+        
+        init(zutat: String, anzahl: Int)
+        {
+            self.zutat = zutat
+            self.anzahl = anzahl
         }
     }
     
