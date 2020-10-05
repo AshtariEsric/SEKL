@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ExpenseItem : Identifiable, Codable {
-    let id = UUID()
+    var id = UUID()
     let beschreibung : String
     let menge : Int
     let type : String
