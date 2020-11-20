@@ -23,15 +23,11 @@ struct AddRecipe: View
     @State var tempRec = temporaryRecipe(beschreibung: "")
     
     @State private var beschreibungRezept = ""
-<<<<<<< HEAD
     @State private var anzahlPersonenRezept = ""
-=======
->>>>>>> parent of fa55d1b... 0.63.2
     @State private var zutatRezept = ""
-    @State private var anzahlPersonenRezept = ""
-    @State private var unitType = "ml"
-    @State private var recipeArray = [""]
     @State private var zutatAnzahl = ""
+    @State private var unitType = "ml"
+    @State private var myIntZutatAnzahl = 0
     
     static let units = ["ml", "liter", "gramm", "kg", "Stk"]
     
@@ -72,6 +68,7 @@ struct AddRecipe: View
                     }
                     HStack{
                         TextField("Anzahl", text: $zutatAnzahl)
+                            .keyboardType(.numberPad)
                         Picker(selection: $unitType, label: Text("")){
                             ForEach(Self.units, id:\.self)
                             {
@@ -81,7 +78,6 @@ struct AddRecipe: View
                         .frame(width: 100, height: 50)
                     }
                     Button(action: {
-<<<<<<< HEAD
                         
                         if let myZutatAnzahl = NumberFormatter().number(from: zutatAnzahl)
                         {
@@ -96,11 +92,6 @@ struct AddRecipe: View
                         {
                             
                         }
-=======
-                        recipeArray.append(zutatRezept)
-                        zutatRezept = ""
-                        zutatAnzahl = ""
->>>>>>> parent of fa55d1b... 0.63.2
                     }){
                         Image(systemName: "plus.circle")
                     }
@@ -109,27 +100,6 @@ struct AddRecipe: View
                 .edgesIgnoringSafeArea(.all)
                 .padding(.leading)
                 Spacer()
-<<<<<<< HEAD
-=======
-                Form {
-                    Text("\(beschreibungRezept)")
-                        .font(.headline)
-                    if !anzahlPersonenRezept.isEmpty{
-                        Text("Für \(anzahlPersonenRezept) Personen")
-                            .font(.subheadline)
-                    }
-                    VStack(alignment: .leading){
-                        //TODO: padding is not working!
-                        List(recipeArray, id: \.self){
-                            string in
-                            Text(string)
-                        }
-                        .padding(.leading)
-                        .edgesIgnoringSafeArea(.all)
-                    }
-                }
-                Spacer()
->>>>>>> parent of fa55d1b... 0.63.2
                 Button(action:{
                     print("Finish")
                 }){
@@ -141,7 +111,6 @@ struct AddRecipe: View
         }
     }
     
-<<<<<<< HEAD
     func combineRecipeElements(zutatAnzahl : Int, zutatRezept: String) -> rezeptZutat
     {
         let myRecipe = rezeptZutat(zutat: zutatRezept, anzahl: zutatAnzahl)
@@ -160,8 +129,6 @@ struct AddRecipe: View
         }
     }
     
-=======
->>>>>>> parent of fa55d1b... 0.63.2
     func removeItems(at offsets: IndexSet){
         recipe.items.remove(atOffsets: offsets)
     }
