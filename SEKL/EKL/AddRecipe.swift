@@ -7,23 +7,15 @@
 //
 
 import SwiftUI
-struct temporaryRecipe : Identifiable, Codable
-{
-    var id = UUID()
-    var beschreibung : String
-    var recipeCollection = [RecipesItem]()
-    
-}
-
 
 struct AddRecipe: View
 {
     @Environment(\.presentationMode) var presentationMode
-    @ObservedObject var recipe = Recipe()
-    @State var tempRec = temporaryRecipe(beschreibung: "")
+    @ObservedObject var recipe : Recipe
     
     @State private var beschreibungRezept = ""
     @State private var anzahlPersonenRezept = ""
+    @State private var recipeArray = [rezeptZutat]()
     @State private var zutatRezept = ""
     @State private var zutatAnzahl = ""
     @State private var unitType = "ml"
@@ -35,26 +27,6 @@ struct AddRecipe: View
     {
         NavigationView{
             VStack{
-                Form {
-                    Text("\(beschreibungRezept)")
-                        .font(.headline)
-                    if !anzahlPersonenRezept.isEmpty{
-                        Text("Für \(anzahlPersonenRezept) Personen")
-                            .font(.subheadline)
-                    }
-                    VStack(alignment: .leading){
-                        List(self.tempRec.recipeCollection){_ in
-                            Text("\(tempRec.recipeCollection)")
-                        }
-                        List(self.recipe.items) { RecipesItem in
-                            Text(RecipesItem.beschreibung)
-  
-                        }
-                        .padding(.leading)
-                        .edgesIgnoringSafeArea(.all)
-                    }
-                }.background(Color.gray)
-                Spacer()
                 Form
                 {
                     TextField("Beschreibung", text: $beschreibungRezept)
@@ -83,7 +55,7 @@ struct AddRecipe: View
                         {
                             myIntZutatAnzahl = myZutatAnzahl.intValue
                             var addZutat = rezeptZutat(zutat: zutatRezept, anzahl: myIntZutatAnzahl)
-                            
+                            recipeArray.append(addZutat)
                             
                             //Clear two TextFields
                             zutatRezept = ""
@@ -100,6 +72,25 @@ struct AddRecipe: View
                 .edgesIgnoringSafeArea(.all)
                 .padding(.leading)
                 Spacer()
+                
+                Form {
+                    Text("\(beschreibungRezept)")
+                        .font(.headline)
+                    if !anzahlPersonenRezept.isEmpty{
+                        Text("Für \(anzahlPersonenRezept) Personen")
+                            .font(.subheadline)
+                    }
+                    VStack(alignment: .leading){
+                        //TODO: padding is not working!
+                        List(recipeArray, id: \.self){
+                            string in
+                            Text(string)
+                        }
+                        .padding(.leading)
+                        .edgesIgnoringSafeArea(.all)
+                    }
+                }.background(Color.gray)
+                Spacer()
                 Button(action:{
                     print("Finish")
                 }){
@@ -113,8 +104,7 @@ struct AddRecipe: View
     
     func combineRecipeElements(zutatAnzahl : Int, zutatRezept: String) -> rezeptZutat
     {
-        let myRecipe = rezeptZutat(zutat: zutatRezept, anzahl: zutatAnzahl)
-        return myRecipe
+        
     }
     
     class rezeptZutat

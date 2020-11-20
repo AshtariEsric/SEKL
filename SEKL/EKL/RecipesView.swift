@@ -9,10 +9,9 @@
 import SwiftUI
 
 struct RecipesItem : Identifiable, Codable {
-    var id = UUID()
-    var beschreibung : String
-    var mengePersonen : Int
-    var typDerMenge : String
+    let id = UUID()
+    let beschreibung : String
+    let mengePersonen : Int
 }
 
 class Recipe : ObservableObject {

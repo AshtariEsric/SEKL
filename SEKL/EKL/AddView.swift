@@ -16,7 +16,6 @@ struct AddView: View {
     @State private var beschreibung = ""
     @State private var menge = ""
     @State private var mengePersonen = ""
-    @State private var typDerMenge = ""
     
     @State private var rezeptOrIngredients = "Default"
     static let subTitle = ["Rezept", "Zutat"]
@@ -101,7 +100,7 @@ struct AddView: View {
                 Button(action: {
                     if self.rezeptOrIngredients == "Rezept" {
                         if let actualMenge = Int(self.mengePersonen){
-                            let item = RecipesItem(beschreibung: self.beschreibung, mengePersonen: actualMenge, typDerMenge: self.typDerMenge)
+                            let item = RecipesItem(beschreibung: self.beschreibung, mengePersonen: actualMenge)
                             self.recipe.items.append(item)
                             self.presentationMode.wrappedValue.dismiss()
                             print("REZEPT!!!")
