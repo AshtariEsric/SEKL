@@ -24,7 +24,10 @@ struct AddRecipe: View
     
     @State private var beschreibungRezept = ""
 <<<<<<< HEAD
+<<<<<<< HEAD
     @State private var anzahlPersonenRezept = ""
+=======
+>>>>>>> parent of fa55d1b... 0.63.2
 =======
 >>>>>>> parent of fa55d1b... 0.63.2
     @State private var zutatRezept = ""
@@ -82,6 +85,7 @@ struct AddRecipe: View
                     }
                     Button(action: {
 <<<<<<< HEAD
+<<<<<<< HEAD
                         
                         if let myZutatAnzahl = NumberFormatter().number(from: zutatAnzahl)
                         {
@@ -101,6 +105,11 @@ struct AddRecipe: View
                         zutatRezept = ""
                         zutatAnzahl = ""
 >>>>>>> parent of fa55d1b... 0.63.2
+=======
+                        recipeArray.append(zutatRezept)
+                        zutatRezept = ""
+                        zutatAnzahl = ""
+>>>>>>> parent of fa55d1b... 0.63.2
                     }){
                         Image(systemName: "plus.circle")
                     }
@@ -110,7 +119,10 @@ struct AddRecipe: View
                 .padding(.leading)
                 Spacer()
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> parent of fa55d1b... 0.63.2
                 Form {
                     Text("\(beschreibungRezept)")
                         .font(.headline)
@@ -142,6 +154,7 @@ struct AddRecipe: View
     }
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     func combineRecipeElements(zutatAnzahl : Int, zutatRezept: String) -> rezeptZutat
     {
         let myRecipe = rezeptZutat(zutat: zutatRezept, anzahl: zutatAnzahl)
@@ -160,6 +173,8 @@ struct AddRecipe: View
         }
     }
     
+=======
+>>>>>>> parent of fa55d1b... 0.63.2
 =======
 >>>>>>> parent of fa55d1b... 0.63.2
     func removeItems(at offsets: IndexSet){
