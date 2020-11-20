@@ -23,11 +23,20 @@ struct AddRecipe: View
     @State var tempRec = temporaryRecipe(beschreibung: "")
     
     @State private var beschreibungRezept = ""
+<<<<<<< HEAD
+<<<<<<< HEAD
     @State private var anzahlPersonenRezept = ""
+=======
+>>>>>>> parent of fa55d1b... 0.63.2
+=======
+>>>>>>> parent of fa55d1b... 0.63.2
     @State private var zutatRezept = ""
-
-    
+    @State private var anzahlPersonenRezept = ""
+    @State private var unitType = "ml"
     @State private var recipeArray = [""]
+    @State private var zutatAnzahl = ""
+    
+    static let units = ["ml", "liter", "gramm", "kg", "Stk"]
     
     var body : some View
     {
@@ -40,7 +49,10 @@ struct AddRecipe: View
                         Text("Für \(anzahlPersonenRezept) Personen")
                             .font(.subheadline)
                     }
-                    
+                    VStack(alignment: .leading){
+                        List(self.tempRec.recipeCollection){_ in
+                            Text("\(tempRec.recipeCollection)")
+                        }
                         List(self.recipe.items) { RecipesItem in
                             Text(RecipesItem.beschreibung)
   
@@ -55,59 +67,69 @@ struct AddRecipe: View
                     TextField("Beschreibung", text: $beschreibungRezept)
                     HStack{
                         TextField("Anzahl Personen", text: $anzahlPersonenRezept)
-                        Spacer()
                         Text("Personen")
+                        Spacer()
                     }
                     HStack{
-                        Button(action: {
-                            recipeArray.append(zutatRezept)
-                            zutatRezept = ""
-                        }){
-                            Image(systemName: "plus.circle")
+                        TextField("Zutat", text: $zutatRezept)
+                    }
+                    HStack{
+                        TextField("Anzahl", text: $zutatAnzahl)
+                        Picker(selection: $unitType, label: Text("")){
+                            ForEach(Self.units, id:\.self)
+                            {
+                                Text($0)
+                            }
                         }
-
                         .frame(width: 100, height: 50)
                     }
                     Button(action: {
-
+<<<<<<< HEAD
+<<<<<<< HEAD
                         
-//                        if let myZutatAnzahl = NumberFormatter().number(from: zutatAnzahl)
-//                        {
-//                            myIntZutatAnzahl = myZutatAnzahl.intValue
-//                            var addZutat = rezeptZutat(zutat: zutatRezept, anzahl: myIntZutatAnzahl)
-//
-//
-//                            //Clear two TextFields
-//                            zutatRezept = ""
-//                            zutatAnzahl = ""
-//                        } else
-//                        {
-//
-//                        }
-//                        recipeArray.append(zutatRezept)
-//                        zutatRezept = ""
-//                        zutatAnzahl = ""
-//                        recipeArray.append(zutatRezept)
-//                        zutatRezept = ""
-//                        zutatAnzahl = ""
+                        if let myZutatAnzahl = NumberFormatter().number(from: zutatAnzahl)
+                        {
+                            myIntZutatAnzahl = myZutatAnzahl.intValue
+                            var addZutat = rezeptZutat(zutat: zutatRezept, anzahl: myIntZutatAnzahl)
+                            
+                            
+                            //Clear two TextFields
+                            zutatRezept = ""
+                            zutatAnzahl = ""
+                        } else
+                        {
+                            
+                        }
+=======
+                        recipeArray.append(zutatRezept)
+                        zutatRezept = ""
+                        zutatAnzahl = ""
+>>>>>>> parent of fa55d1b... 0.63.2
+=======
+                        recipeArray.append(zutatRezept)
+                        zutatRezept = ""
+                        zutatAnzahl = ""
+>>>>>>> parent of fa55d1b... 0.63.2
                     }){
                         Image(systemName: "plus.circle")
-                        TextField("Zutat", text: $zutatRezept)
-
                     }
+                    
                 }
                 .edgesIgnoringSafeArea(.all)
                 .padding(.leading)
                 Spacer()
-                
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> parent of fa55d1b... 0.63.2
                 Form {
-
-                List {
-
                     Text("\(beschreibungRezept)")
                         .font(.headline)
-                    Text("Für \(anzahlPersonenRezept) Personen")
-                        .font(.subheadline)
+                    if !anzahlPersonenRezept.isEmpty{
+                        Text("Für \(anzahlPersonenRezept) Personen")
+                            .font(.subheadline)
+                    }
                     VStack(alignment: .leading){
                         //TODO: padding is not working!
                         List(recipeArray, id: \.self){
@@ -119,7 +141,7 @@ struct AddRecipe: View
                     }
                 }
                 Spacer()
-
+>>>>>>> parent of fa55d1b... 0.63.2
                 Button(action:{
                     print("Finish")
                 }){
@@ -131,6 +153,8 @@ struct AddRecipe: View
         }
     }
     
+<<<<<<< HEAD
+<<<<<<< HEAD
     func combineRecipeElements(zutatAnzahl : Int, zutatRezept: String) -> rezeptZutat
     {
         let myRecipe = rezeptZutat(zutat: zutatRezept, anzahl: zutatAnzahl)
@@ -149,6 +173,10 @@ struct AddRecipe: View
         }
     }
     
+=======
+>>>>>>> parent of fa55d1b... 0.63.2
+=======
+>>>>>>> parent of fa55d1b... 0.63.2
     func removeItems(at offsets: IndexSet){
         recipe.items.remove(atOffsets: offsets)
     }
