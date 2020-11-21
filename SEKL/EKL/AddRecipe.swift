@@ -19,8 +19,13 @@ struct AddRecipe: View
     @State private var unitType = "ml"
     @State private var recipeArray = [""]
     @State private var zutatAnzahl = ""
-    
+
     static let units = ["ml", "liter", "gramm", "kg", "Stk"]
+
+    @State private var rezeptOrIngredients = "Rezept"
+    @State private var mengePersonen = ""
+    @State private var beschreibung = ""
+    @State private var actualMenge = 0
     
     var body : some View
     {
@@ -28,67 +33,34 @@ struct AddRecipe: View
             VStack{
                 Form
                 {
-                    TextField("Beschreibung", text: $beschreibungRezept)
-                    HStack{
-                        TextField("Anzahl Personen", text: $anzahlPersonenRezept)
-                        Text("Personen")
-                        Spacer()
+                    Section(header: Text("Allgemeines"))
+                    {
+                        TextField("Beschreibung", text: $beschreibung)
+                        TextField("Anzahl Personen", text: $mengePersonen)
                     }
-                    HStack{
-                        TextField("Zutat", text: $zutatRezept)
-                    }
-                    HStack{
-                        TextField("Anzahl", text: $zutatAnzahl)
-                        Picker(selection: $unitType, label: Text("")){
-                            ForEach(Self.units, id:\.self)
+                    if !beschreibung.isEmpty && !mengePersonen.isEmpty
+                    {
+                        Section(header: Text("Zutaten"))
                             {
-                                Text($0)
+                                NavigationLink(destination: RecipeIngredientsView()){
+                                Text("Zutaten pflegen für \(mengePersonen) Personen")
+                                }
                             }
-                        }
-                        .frame(width: 100, height: 50)
-                    }
-                    Button(action: {
-                        recipeArray.append(zutatRezept)
-                        zutatRezept = ""
-                        zutatAnzahl = ""
-                    }){
-                        Image(systemName: "plus.circle")
                     }
                     
-                }
-                .edgesIgnoringSafeArea(.all)
-                .padding(.leading)
-                Spacer()
-                Form {
-                    Text("\(beschreibungRezept)")
-                        .font(.headline)
-                    if !anzahlPersonenRezept.isEmpty{
-                        Text("Für \(anzahlPersonenRezept) Personen")
-                            .font(.subheadline)
+                    Button(action: {
+                                if let actualMenge = Int(self.mengePersonen){
+                                    let item = RecipesItem(beschreibung: self.beschreibung, mengePersonen: actualMenge)
+                                    self.recipe.items.append(item)
+                                    self.presentationMode.wrappedValue.dismiss()
+                                    print(item.mengePersonen)
+                                    print(item.beschreibung)
+                                }
+                    }){Text("Hinzufügen eines Rezepts")}
                     }
-                    VStack(alignment: .leading){
-                        //TODO: padding is not working!
-                        List(recipeArray, id: \.self){
-                            string in
-                            Text(string)
-                        }
-                        .padding(.leading)
-                        .edgesIgnoringSafeArea(.all)
-                    }
-                }
-                Spacer()
-                Button(action:{
-                    print("Finish")
-                }){
-                    Text("Rezept abschließen!")
-                        .overlay(RoundedRectangle(cornerRadius: 40)
-                                    .stroke(Color.green, lineWidth: 2))
-                }
+                
             }.navigationBarTitle("Rezept hinzufügen")
         }
     }
-    
-    func removeItems(at offsets: IndexSet){
-        recipe.items.remove(atOffsets: offsets)
-    }
 }
+

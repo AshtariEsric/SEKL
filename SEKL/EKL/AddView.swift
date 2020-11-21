@@ -55,55 +55,63 @@ struct AddView: View {
     var body: some View {
         NavigationView {
             Form {
-                Picker("Rezept oder Zutat", selection: $rezeptOrIngredients){
-                    ForEach(Self.subTitle, id: \.self)
+                Section(header:Text("TEST"))
                     {
-                        Text($0)
-                    }
-                }
-                
-                if rezeptOrIngredients == "Zutat" {
-                    Picker("Type", selection: $type){
-                        ForEach(Self.types, id:\.self){
-                            Text($0)
-                        }
-                    }
-                    TextField("Beschreibung", text: $beschreibung)
-                    HStack{
-                        TextField("Menge", text: $menge)
-                        Picker(selection: $unitType, label: Text("Anzahl Personen")){
-                            ForEach(Self.units, id:\.self)
+                        Picker("Rezept oder Zutat", selection: $rezeptOrIngredients){
+                            ForEach(Self.subTitle, id: \.self)
                             {
                                 Text($0)
                             }
-                        }.pickerStyle(WheelPickerStyle())
-                        .frame(width: 100, height: 100)
-                        myImage()
                     }
-                    
                 }
+                    if rezeptOrIngredients == "Zutat" {
+                        Section(header: Text("Details"))
+                        {
+                        Picker("Type", selection: $type){
+                            ForEach(Self.types, id:\.self){
+                                Text($0)
+                            }
+                        }
+                        TextField("Beschreibung", text: $beschreibung)
+                        HStack{
+                            TextField("Menge", text: $menge)
+                            Picker(selection: $unitType, label: Text("Anzahl Personen")){
+                                ForEach(Self.units, id:\.self)
+                                {
+                                    Text($0)
+                                }
+                            }.pickerStyle(WheelPickerStyle())
+                            .frame(width: 100, height: 100)
+                            myImage()
+                        }
+                    }
+                    }
+                
                 
                 if rezeptOrIngredients == "Rezept"
                 {
-                    TextField("Beschreibung", text: $beschreibung)
-                        TextField("Anzahl Personen", text: $mengePersonen);
-//                      *** FEATURE ***
-//                        Picker(selection: $mengePersonen, label: Text("Anzahl Personen")){
-//                            ForEach(self.anzahlPers, id:\.self)
-//                            {
-//                                Text(String($0))
-//                            }
-//                        }.pickerStyle(WheelPickerStyle())
-//                            .frame(width: 100, height: 100)
                     
+                        Section(header: Text("Allgemeines"))
+                            {
+                            TextField("Beschreibung", text: $beschreibung)
+                            TextField("Anzahl Personen", text: $mengePersonen)
+                            }
+                    if !beschreibung.isEmpty && !mengePersonen.isEmpty{
+                        Section(header: Text("Zutaten"))
+                            {
+                            NavigationLink(destination: RecipeIngredientsView()){
+                                Text("Zutaten pflegen")
+                            }
+                            }
+                    }
                 }
+                
                 Button(action: {
                     if self.rezeptOrIngredients == "Rezept" {
                         if let actualMenge = Int(self.mengePersonen){
                             let item = RecipesItem(beschreibung: self.beschreibung, mengePersonen: actualMenge)
                             self.recipe.items.append(item)
                             self.presentationMode.wrappedValue.dismiss()
-                            print("REZEPT!!!")
                             print(item.mengePersonen)
                             print(item.beschreibung)
                             
@@ -118,7 +126,7 @@ struct AddView: View {
                             let item = ExpenseItem(beschreibung: self.beschreibung, menge: actualMenge, type: self.type, unitType: self.unitType, itemImage: self.type)
                             self.expense.items.append(item)
                             self.presentationMode.wrappedValue.dismiss()
-                            print("ZUTAT!!!")
+
                         }
                     }
                 })

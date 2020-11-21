@@ -11,7 +11,6 @@
 		860E5283243C7F6A0028C01C /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E5282243C7F6A0028C01C /* MailView.swift */; };
 		860E52A7243DB5800028C01C /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E52A6243DB5800028C01C /* TestView.swift */; };
 		861118272424E2BA001B50DD /* RecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861118262424E2BA001B50DD /* RecipesView.swift */; };
-		861118292424E405001B50DD /* oftenUsedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861118282424E405001B50DD /* oftenUsedView.swift */; };
 		8611182B2424E544001B50DD /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8611182A2424E544001B50DD /* ShareView.swift */; };
 		8612349924320B0A0035442E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8612349824320B0A0035442E /* GoogleService-Info.plist */; };
 		8617B5C02522817F00B462EC /* AddRecipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8617B5BF2522817F00B462EC /* AddRecipe.swift */; };
@@ -27,6 +26,7 @@
 		86BE551B23C5491400FFAEB9 /* RegistrationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86BE551A23C5491400FFAEB9 /* RegistrationScreen.swift */; };
 		86C0F8A02406E9B9007B997A /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0F89F2406E9B9007B997A /* AddView.swift */; };
 		86C0F8A22406EE13007B997A /* EKLComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C0F8A12406EE13007B997A /* EKLComplete.swift */; };
+		86F29DF3256819430096DA88 /* RecipeIngredientsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86F29DF2256819430096DA88 /* RecipeIngredientsView.swift */; };
 		AEE9122361D8ACD850176722 /* libPods-SEKL.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79D8909FD1A73FB2FB0672E3 /* libPods-SEKL.a */; };
 /* End PBXBuildFile section */
 
@@ -38,7 +38,6 @@
 		860E5282243C7F6A0028C01C /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		860E52A6243DB5800028C01C /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		861118262424E2BA001B50DD /* RecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesView.swift; sourceTree = "<group>"; };
-		861118282424E405001B50DD /* oftenUsedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = oftenUsedView.swift; sourceTree = "<group>"; };
 		8611182A2424E544001B50DD /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		8612349824320B0A0035442E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8617B5BF2522817F00B462EC /* AddRecipe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRecipe.swift; sourceTree = "<group>"; };
@@ -56,6 +55,7 @@
 		86BE551A23C5491400FFAEB9 /* RegistrationScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistrationScreen.swift; sourceTree = "<group>"; };
 		86C0F89F2406E9B9007B997A /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
 		86C0F8A12406EE13007B997A /* EKLComplete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EKLComplete.swift; sourceTree = "<group>"; };
+		86F29DF2256819430096DA88 /* RecipeIngredientsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipeIngredientsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,10 +147,10 @@
 			isa = PBXGroup;
 			children = (
 				86C0F89F2406E9B9007B997A /* AddView.swift */,
+				86F29DF2256819430096DA88 /* RecipeIngredientsView.swift */,
 				8617B5BF2522817F00B462EC /* AddRecipe.swift */,
 				86C0F8A12406EE13007B997A /* EKLComplete.swift */,
 				8611182A2424E544001B50DD /* ShareView.swift */,
-				861118282424E405001B50DD /* oftenUsedView.swift */,
 				861118262424E2BA001B50DD /* RecipesView.swift */,
 			);
 			path = EKL;
@@ -265,8 +265,8 @@
 			files = (
 				8611182B2424E544001B50DD /* ShareView.swift in Sources */,
 				86B5677623C5446700399EF5 /* AppDelegate.swift in Sources */,
-				861118292424E405001B50DD /* oftenUsedView.swift in Sources */,
 				86C0F8A22406EE13007B997A /* EKLComplete.swift in Sources */,
+				86F29DF3256819430096DA88 /* RecipeIngredientsView.swift in Sources */,
 				861118272424E2BA001B50DD /* RecipesView.swift in Sources */,
 				860E5283243C7F6A0028C01C /* MailView.swift in Sources */,
 				860E52A7243DB5800028C01C /* TestView.swift in Sources */,
