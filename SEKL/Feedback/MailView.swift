@@ -16,6 +16,9 @@ import SwiftUI
 import UIKit
 import MessageUI
 
+/*
+    Öffnet eine Mail im als Standard hinterlegten Mailprogramm von Apple und fügt dort die benötigten Daten ein.
+ */
 struct MailView: UIViewControllerRepresentable {
     @EnvironmentObject var feedbackContent : Feedback
     @EnvironmentObject var rating : UserRating

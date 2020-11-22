@@ -7,13 +7,18 @@
 import SwiftUI
 import MessageUI
 
+/*
+    ObservableObject für den feedbackText und den userName. Diese werden in der MailView automatisch bei absenden mit übernommen und entsprechend eingefügt, sodass der User diese nicht erneut eintragen muss.
+ **/
 class Feedback : ObservableObject {
     @Published var feedBackText : String = ""
     @Published var userName : String = ""
     
 }
+/*
+ 
+ */
 struct FeedbackView: View {
-    //Feedback Mail
     @EnvironmentObject var feedbackContent : Feedback
     @EnvironmentObject var rating : UserRating
     
@@ -25,12 +30,13 @@ struct FeedbackView: View {
         NavigationView {
             ZStack{
                 VStack(alignment: .center){
-                    Text("Du hast Anmerkungen oder Verbesserungsvorschläge? \nTeile sie uns mit und wir kümmern uns schnellstmöglich darum!")
+                    Text("Du hast Anmerkungen oder Verbesserungsvorschläge? \nTeile sie uns mit!")
                         .font(.headline)
                         .multilineTextAlignment(.center)
                     Spacer()
                     abfrageView()
                     Spacer()
+                    //Wenn Absenden geklickt wird, öffne MailView. Dabei übergib zwei environmentObject (rating und feedbackContent)
                     Button(action: {
                         self.isShowingMailView.toggle()
                     }) {
@@ -49,7 +55,12 @@ struct FeedbackView: View {
         }
     }
 }
-//Star Rating functionality
+/*
+    AbfrageView fragt den Usernamen und die Beschreibung ab.
+    Öffnet im Anschluss Rating()
+    feedbackContent wird ebenfalls in Rating verwendet.
+ 
+ */
 struct abfrageView: View {
     @State private var userName : String = ""
     @State private var feedBackText : String = ""

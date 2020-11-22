@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		860E527C243535BD0028C01C /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E527B243535BD0028C01C /* Rating.swift */; };
 		860E5283243C7F6A0028C01C /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E5282243C7F6A0028C01C /* MailView.swift */; };
-		860E52A7243DB5800028C01C /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E52A6243DB5800028C01C /* TestView.swift */; };
 		861118272424E2BA001B50DD /* RecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861118262424E2BA001B50DD /* RecipesView.swift */; };
 		8611182B2424E544001B50DD /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8611182A2424E544001B50DD /* ShareView.swift */; };
 		8612349924320B0A0035442E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8612349824320B0A0035442E /* GoogleService-Info.plist */; };
@@ -36,7 +35,6 @@
 		79D8909FD1A73FB2FB0672E3 /* libPods-SEKL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SEKL.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		860E527B243535BD0028C01C /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		860E5282243C7F6A0028C01C /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
-		860E52A6243DB5800028C01C /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		861118262424E2BA001B50DD /* RecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesView.swift; sourceTree = "<group>"; };
 		8611182A2424E544001B50DD /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
 		8612349824320B0A0035442E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 			isa = PBXGroup;
 			children = (
 				863AD4DE2434B16B00C85617 /* FeedbackView.swift */,
-				860E52A6243DB5800028C01C /* TestView.swift */,
 				860E527B243535BD0028C01C /* Rating.swift */,
 				860E5282243C7F6A0028C01C /* MailView.swift */,
 			);
@@ -269,7 +266,6 @@
 				86F29DF3256819430096DA88 /* RecipeIngredientsView.swift in Sources */,
 				861118272424E2BA001B50DD /* RecipesView.swift in Sources */,
 				860E5283243C7F6A0028C01C /* MailView.swift in Sources */,
-				860E52A7243DB5800028C01C /* TestView.swift in Sources */,
 				863AD4DF2434B16B00C85617 /* FeedbackView.swift in Sources */,
 				86B5677823C5446700399EF5 /* SceneDelegate.swift in Sources */,
 				86210C7024238F0D0001D5E9 /* LoginFormView.swift in Sources */,

@@ -15,7 +15,9 @@ class UserRating : ObservableObject {
         self.rating = rating
     }
 }
-
+/*
+    Rating bildet ausschließlich die Sterne in der Feedback View ab.
+ */
 struct Rating: View {
     @EnvironmentObject var rating : UserRating
     

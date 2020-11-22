@@ -43,7 +43,7 @@ struct AddRecipe: View
                         Section(header: Text("Zutaten"))
                             {
                                 NavigationLink(destination: RecipeIngredientsView()){
-                                Text("Zutaten pflegen für \(mengePersonen) Personen")
+                                Text("Zutaten für \(mengePersonen) Personen")
                                 }
                             }
                     }
