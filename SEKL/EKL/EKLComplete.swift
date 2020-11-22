@@ -8,6 +8,9 @@
 
 import SwiftUI
 
+/*
+    Aufbau eines ExpenseItem (einer Zutat)
+ **/
 struct ExpenseItem : Identifiable, Codable {
     let id = UUID()
     let beschreibung : String
@@ -17,7 +20,6 @@ struct ExpenseItem : Identifiable, Codable {
     let itemImage : String
 }
 
-//ObservableObject können mehr als in einer View genutzt werden
 class Expense: ObservableObject {
     @Published var items = [ExpenseItem]()
         {
@@ -43,7 +45,12 @@ class Expense: ObservableObject {
     }
 }
 
+/*
+    EKLComplete ist für die komplette Einkaufsliste. Dort werden Rezepte und/ oder Zutaten angezeigt
+ **/
 struct EKLComplete: View {
+    //recipeBook - Array für Rezepte
+    //expenses - Objekt von einer Zutat
     @ObservedObject var expenses = Expense()
     @EnvironmentObject var recipeBook : Recipe
     @State private var showingAddExpense = false
@@ -71,6 +78,7 @@ struct EKLComplete: View {
                         AddView(expense: self.expenses, recipe: self.recipeBook)
                 }
             }
+            //tabItems um auf die anderen Views zu navigieren
             .tabItem {
                 Image(systemName: "bag")
                 Text("Buylist")
@@ -85,7 +93,8 @@ struct EKLComplete: View {
                     Image(systemName: "exclamationmark.bubble")
                     Text("Feedback")
             }
-           /*
+           ///TODO:
+            /*
             Häufig genutzt View - ggf. nachträglich?
              oftenUsedView()
                 .tabItem{

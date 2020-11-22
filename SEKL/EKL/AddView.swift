@@ -8,6 +8,10 @@
 
 import SwiftUI
 
+/*
+    AddView ist für das Hinzufügen von neuen Zutaten und Rezepten auf die Einkaufsliste zuständig.
+ **/
+
 struct AddView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var expense : Expense
@@ -17,12 +21,15 @@ struct AddView: View {
     @State private var menge = ""
     @State private var mengePersonen = ""
     
+    //Entscheidungsfindung Rezept oder Zutat
     @State private var rezeptOrIngredients = "Default"
     static let subTitle = ["Rezept", "Zutat"]
     
+    //unitType für das Hinzufügen von Zutaten
     @State private var unitType = "ml"
     static let units = ["ml", "liter", "gramm", "kg", "Stk"]
     
+    //Wichtig für die hinterlegten ICONS. .sorted damit es alphabetisch sortiert ist.
     @State private var type = "Default"
     static let types = ["Nahrungsmittel","Haushaltsartikel", "Getränke", "Obst und Gemüse", "Tiefkühl", "Drogerie und Kosmetik", "Baby und Kind", "Tierartikel", "Süßigkeiten und Salzigkeiten"]
         .sorted()
@@ -30,11 +37,12 @@ struct AddView: View {
     @State private var auswahl : Int = 0
     @State private var person = ""
     
+    //Entscheidend zur Berechnung bei Rezepten (Menge Personen * Rezept = Anzahl der benötigten Ressourcen)
     @State private var defaultAnzahlPerson = 1
     static let anzahlPers = [1,2,3,4,5,6,7,8,9,10]
-    
     @State private var itemImage = ""
     
+    //Image Sammlung für die Typen.
     func myImage() -> some View {
         switch type {
             case "Nahrungsmittel": itemImage = "Nahrungsmittel" //x
@@ -55,8 +63,9 @@ struct AddView: View {
     var body: some View {
         NavigationView {
             Form {
-                Section(header:Text("TEST"))
+                Section(header:Text("Art"))
                     {
+                    ///TODO: SLIDER REZEPT ODER ZUTAT!
                         Picker("Rezept oder Zutat", selection: $rezeptOrIngredients){
                             ForEach(Self.subTitle, id: \.self)
                             {

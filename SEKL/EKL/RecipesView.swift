@@ -38,7 +38,9 @@ class Recipe : ObservableObject {
         self.items = []
     }
 }
-
+/*
+    Rezept Bibliothek 
+ **/
 struct RecipesView: View {
     @State private var showingAddRecipe = false
     @ObservedObject var expenses = Expense()

@@ -8,6 +8,9 @@
 
 import SwiftUI
 
+/*
+    Zutaten pflegen Button, zum hinzufügen von Zutaten zu einem Rezept.
+ **/
 struct RecipeIngredientsView: View {
     var body: some View {
         Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)

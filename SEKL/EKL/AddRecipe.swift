@@ -8,6 +8,9 @@
 
 import SwiftUI
 
+/*
+ Fügt ein Rezept zur Bibliothek hinzu
+ **/
 struct AddRecipe: View
 {
     @Environment(\.presentationMode) var presentationMode

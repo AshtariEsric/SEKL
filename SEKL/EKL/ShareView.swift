@@ -8,6 +8,9 @@
 
 import SwiftUI
 
+/*
+    View zum teilen von Rezepten
+ **/
 struct ShareView: View {
     var body: some View {
         NavigationView {
