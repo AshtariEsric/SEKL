@@ -41,7 +41,7 @@ struct AddView: View {
     @State private var defaultAnzahlPerson = 1
     static let anzahlPers = [1,2,3,4,5,6,7,8,9,10]
     @State private var itemImage = ""
-    
+    @State var toggleShowing = true
     //Image Sammlung für die Typen.
     func myImage() -> some View {
         switch type {
@@ -54,7 +54,6 @@ struct AddView: View {
             case "Baby und Kind": itemImage = "Baby und Kind" //x
             case "Tierartikel": itemImage = "Tierartikel" //x
             case "Süßigkeiten und Salzigkeiten": itemImage = "Süßigkeiten und Salzigkeiten" //x
-                
         default: itemImage = "empty"
         }
         return Image(itemImage)
@@ -66,6 +65,7 @@ struct AddView: View {
                 Section(header:Text("Art"))
                     {
                     ///TODO: SLIDER REZEPT ODER ZUTAT!
+
                         Picker("Rezept oder Zutat", selection: $rezeptOrIngredients){
                             ForEach(Self.subTitle, id: \.self)
                             {
@@ -76,7 +76,7 @@ struct AddView: View {
                     if rezeptOrIngredients == "Zutat" {
                         Section(header: Text("Details"))
                         {
-                        Picker("Type", selection: $type){
+                        Picker("Typ", selection: $type){
                             ForEach(Self.types, id:\.self){
                                 Text($0)
                             }
