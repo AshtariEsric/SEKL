@@ -35,6 +35,20 @@ extension View
         return modifier(ResignKeyboardOnDragGesture())
     }
 }
+
+struct BlueButtonStyle: ButtonStyle
+{
+    func makeBody(configuration: Self.Configuration) -> some View
+    {
+        configuration.label
+            .font(.headline)
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
+            .contentShape(Rectangle())
+            .foregroundColor(configuration.isPressed ? Color.white.opacity(0.5) : Color.white)
+            .listRowBackground(configuration.isPressed ? Color.blue.opacity(0.5) : Color.blue)
+    }
+}
+
 /*
     Zutaten pflegen Button, zum hinzufügen von Zutaten zu einem Rezept.
  **/
@@ -42,10 +56,9 @@ struct RecipeIngredientsView: View {
     let myArray = ["Dennis", "Tessa", "Peter", "Anna", "Tessa", "Klaus", "Xyan", "Zuhau", "Clown", "Brot", "Bauer"]
     @State private var searchText = ""
     @State private var showCancelButton: Bool = false
+
     
     var body: some View {
-        NavigationView
-        {
             VStack
             {
                 HStack
@@ -86,16 +99,30 @@ struct RecipeIngredientsView: View {
                         {
                         searchText in Text(searchText)
                     }
+
+                    Button(action:{})
+                        {
+                        HStack
+                        {
+                            Image(systemName: "plus.circle.fill")
+                                .resizable()
+                                .frame(width: 20,height:20)
+                            Text("New Test")
+                        }
+                    }.padding()
+                    .accentColor(Color(UIColor.systemRed))
                 }
                 .navigationBarTitle(Text("Suche"))
                 .resignKeyboardOnDragGesture()
+                
             }
         }
     }
-}
+
 
 struct RecipeIngredientsView_Previews: PreviewProvider {
     static var previews: some View {
         RecipeIngredientsView()
     }
 }
+
