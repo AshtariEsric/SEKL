@@ -21,7 +21,6 @@ extension UIApplication
 struct ResignKeyboardOnDragGesture: ViewModifier
 {
     var gesture = DragGesture().onChanged{_ in UIApplication.shared.endEditing(_force: true)}
-    
     func body(content: Content) -> some View
     {
         content.gesture(gesture)
@@ -48,7 +47,6 @@ struct BlueButtonStyle: ButtonStyle
             .listRowBackground(configuration.isPressed ? Color.blue.opacity(0.5) : Color.blue)
     }
 }
-
 /*
     Zutaten pflegen Button, zum hinzufügen von Zutaten zu einem Rezept.
  **/
@@ -75,25 +73,25 @@ struct RecipeIngredientsView: View {
                             }){
                             Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1)
                             }
-                    }.padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
-                    .foregroundColor(.secondary)
-                    .background(Color(.secondarySystemBackground))
-                    .cornerRadius(10.0)
-                    
-                    if showCancelButton {
+                        }.padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
+                        .foregroundColor(.secondary)
+                        .background(Color(.secondarySystemBackground))
+                        .cornerRadius(10.0)
+                        
+                        if showCancelButton {
                         Button("Abbrechen")
                             {
                             UIApplication.shared.endEditing(_force: true)
                             self.searchText = ""
                             self.showCancelButton = false
                             }
-                        .foregroundColor(Color(.systemBlue))
-                    }
-                }
-                .padding(.horizontal)
-                .navigationBarHidden(showCancelButton)
-                
-                //Gefilterte Liste der Namen aus meinem Array
+                                .foregroundColor(Color(.systemBlue))
+                            }
+                        }
+                        .padding(.horizontal)
+                        .navigationBarHidden(showCancelButton)
+                        
+                        //Gefilterte Liste der Namen aus meinem Array
                 List {
                     ForEach(myArray.filter{$0.hasPrefix(searchText) || searchText == ""}, id:\.self)
                         {
@@ -114,7 +112,6 @@ struct RecipeIngredientsView: View {
                 }
                 .navigationBarTitle(Text("Suche"))
                 .resignKeyboardOnDragGesture()
-                
             }
         }
     }
