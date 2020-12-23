@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		860C33032593895400930B6F /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 860C33022593895300930B6F /* bg.png */; };
 		860E527C243535BD0028C01C /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E527B243535BD0028C01C /* Rating.swift */; };
 		860E5283243C7F6A0028C01C /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 860E5282243C7F6A0028C01C /* MailView.swift */; };
 		861118272424E2BA001B50DD /* RecipesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 861118262424E2BA001B50DD /* RecipesView.swift */; };
@@ -32,6 +33,7 @@
 		0FB2D10EA9D171CDCE9E0616 /* Pods-SEKL.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SEKL.release.xcconfig"; path = "Target Support Files/Pods-SEKL/Pods-SEKL.release.xcconfig"; sourceTree = "<group>"; };
 		670E0B45EBE1E237721A4098 /* Pods-SEKL.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SEKL.debug.xcconfig"; path = "Target Support Files/Pods-SEKL/Pods-SEKL.debug.xcconfig"; sourceTree = "<group>"; };
 		79D8909FD1A73FB2FB0672E3 /* libPods-SEKL.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SEKL.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		860C33022593895300930B6F /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
 		860E527B243535BD0028C01C /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		860E5282243C7F6A0028C01C /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 		861118262424E2BA001B50DD /* RecipesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesView.swift; sourceTree = "<group>"; };
@@ -87,6 +89,7 @@
 		86B5676923C5446700399EF5 = {
 			isa = PBXGroup;
 			children = (
+				860C33022593895300930B6F /* bg.png */,
 				86B5677423C5446700399EF5 /* SEKL */,
 				86B5677323C5446700399EF5 /* Products */,
 				F3D9255892D824F95AF23B2E /* Pods */,
@@ -218,6 +221,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				860C33032593895400930B6F /* bg.png in Resources */,
 				86B5677F23C5446B00399EF5 /* Preview Assets.xcassets in Resources */,
 				86B5677C23C5446B00399EF5 /* Assets.xcassets in Resources */,
 				8612349924320B0A0035442E /* GoogleService-Info.plist in Resources */,
