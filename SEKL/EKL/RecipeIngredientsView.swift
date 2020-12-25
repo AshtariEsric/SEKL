@@ -35,18 +35,6 @@ extension View
     }
 }
 
-struct BlueButtonStyle: ButtonStyle
-{
-    func makeBody(configuration: Self.Configuration) -> some View
-    {
-        configuration.label
-            .font(.headline)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .center)
-            .contentShape(Rectangle())
-            .foregroundColor(configuration.isPressed ? Color.white.opacity(0.5) : Color.white)
-            .listRowBackground(configuration.isPressed ? Color.blue.opacity(0.5) : Color.blue)
-    }
-}
 /*
     Zutaten pflegen Button, zum hinzufügen von Zutaten zu einem Rezept.
  **/
@@ -91,30 +79,41 @@ struct RecipeIngredientsView: View {
                         .padding(.horizontal)
                         .navigationBarHidden(showCancelButton)
                         
-                        //Gefilterte Liste der Namen aus meinem Array
+                        //Gefilterte Liste mit den Namen aus meinem Array
                 List {
-                    ForEach(myArray.filter{$0.hasPrefix(searchText) || searchText == ""}, id:\.self)
-                        {
-                        searchText in Text(searchText)
-                    }
-
-                    Button(action:{})
-                        {
-                        HStack
-                        {
-                            Image(systemName: "plus.circle.fill")
-                                .resizable()
-                                .frame(width: 20,height:20)
-                            Text("New Test")
+                    VStack{
+                        ForEach(myArray.filter{$0.hasPrefix(searchText) || searchText == ""}, id:\.self)
+                            {
+                            searchText in VStack {
+                            CardView(searchText: searchText)
+                            }
                         }
-                    }.padding()
-                    .accentColor(Color(UIColor.systemRed))
+                        Spacer()
+                    }
                 }
                 .navigationBarTitle(Text("Suche"))
                 .resignKeyboardOnDragGesture()
             }
         }
     }
+
+struct CardView : View
+{
+    @State var searchText = ""
+    var body : some View
+    {
+        HStack{
+            Text(searchText)
+            Spacer()
+            Button(action: {print("\(searchText) btn pressed!")})
+                {
+                Image(systemName: "circle")
+                .frame(width:25, height:25)
+                .clipShape(Circle())
+                }
+             }
+    }
+}
 
 
 struct RecipeIngredientsView_Previews: PreviewProvider {
