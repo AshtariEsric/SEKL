@@ -46,7 +46,7 @@ class Expense: ObservableObject {
 }
 
 /*
-    EKLComplete ist für die komplette Einkaufsliste. Dort werden Rezepte und/ oder Zutaten angezeigt
+    EKLComplete ist  die komplette Einkaufsliste. Dort werden Rezepte und/ oder Zutaten angezeigt
  **/
 struct EKLComplete: View {
     //recipeBook - Array für Rezepte
@@ -86,7 +86,7 @@ struct EKLComplete: View {
             RecipesView()
                 .tabItem {
                     Image(systemName: "doc.text")
-                    Text("Bibliothek")
+                    Text("Rezepte")
             }
             FeedbackView()
                 .tabItem{

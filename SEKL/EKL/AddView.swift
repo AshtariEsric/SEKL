@@ -36,13 +36,14 @@ struct AddView: View {
     
     @State private var auswahl : Int = 0
     @State private var person = ""
+    @State private var searchText = ""
     
     //Entscheidend zur Berechnung bei Rezepten (Menge Personen * Rezept = Anzahl der benötigten Ressourcen)
     @State private var defaultAnzahlPerson = 1
     static let anzahlPers = [1,2,3,4,5,6,7,8,9,10]
     @State private var itemImage = ""
     @State var toggleShowing = true
-    //Image Sammlung für die Typen.
+    //Image Sammlung für die Typen
     func myImage() -> some View {
         switch type {
             case "Nahrungsmittel": itemImage = "Nahrungsmittel" //x
@@ -99,20 +100,14 @@ struct AddView: View {
                 
                 if rezeptOrIngredients == "Rezept"
                 {
-                    
                         Section(header: Text("Allgemeines"))
                             {
-                            TextField("Beschreibung", text: $beschreibung)
-                            TextField("Anzahl Personen", text: $mengePersonen)
+                                TextField("Anzahl Personen", text: $mengePersonen)
+                                NavigationLink(destination: SearchBar().padding(.top,-30)){
+                                    Text("Wähle Rezept")
+                                }
+                            
                             }
-                    if !beschreibung.isEmpty && !mengePersonen.isEmpty{
-                        Section(header: Text("Zutaten"))
-                            {
-                            NavigationLink(destination: RecipeIngredientsView()){
-                                Text("Zutaten pflegen")
-                            }
-                            }
-                    }
                 }
                 
                 Button(action: {
@@ -155,6 +150,8 @@ struct AddView: View {
         }
     }
 }
+
+
 
 struct AddThings_Previews: PreviewProvider {
     static var previews: some View {
