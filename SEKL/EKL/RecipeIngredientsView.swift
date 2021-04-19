@@ -35,7 +35,7 @@ extension View
     }
 }
 
-let myArrayData = [TestData(hasPrefix: "Dennis",completed: false), TestData(hasPrefix: "Tessa", completed: false), TestData(hasPrefix: "Peter", completed: false), TestData(hasPrefix: "Klaus", completed: false), TestData(hasPrefix: "Xyan", completed: false)]
+private var  myArrayData = [TestData(hasPrefix: "Dennis",completed: false), TestData(hasPrefix: "Tessa", completed: false), TestData(hasPrefix: "Peter", completed: false), TestData(hasPrefix: "Klaus", completed: false), TestData(hasPrefix: "Xyan", completed: false)]
 
 /*
  Zutaten pflegen Button, zum hinzufügen von Zutaten zu einem Rezept.
@@ -80,23 +80,16 @@ struct RecipeIngredientsView: View {
             .navigationBarHidden(showCancelButton)
             
             //Gefilterte Liste mit den Namen aus meinem Array
-            /*List() {
-                ForEach(myArrayData.filter{$0.hasPrefix(searchText) || searchText == ""})
-                {
-                    searchText in VStack {
-                        CardView(searchText: self.searchText)
-                    }
-                }
-                Spacer()
-            }*/
-            List(myArrayData, id:\.hasPrefix){ item in
-                    CardView(searchText: item.hasPrefix)
-                }
+            
+            List(myArrayData.filter({searchText.isEmpty ? true : $0.hasPrefix.contains(searchText)
+            })) { item in
+                CardView(searchText: item.hasPrefix)
             }
-            .navigationBarTitle(Text("Suche"))
-            .resignKeyboardOnDragGesture()
         }
+        .navigationBarTitle(Text("Suche"))
+        .resignKeyboardOnDragGesture()
     }
+}
 
 
 struct CardView : View
@@ -113,20 +106,21 @@ struct CardView : View
         HStack{
             Text(searchText)
             Spacer()
-
+            
             Button(action: {
-                toggle()
-                print("\(searchText) btn pressed!")})
+                    toggle()
+                    print("\(searchText) btn pressed!")})
             {
                 Image(systemName: isChecked ? "checkmark.square" : "square")
-                        .frame(width:25, height:25)
-                        .clipShape(Circle())
+                    .frame(width:25, height:25)
+                    .clipShape(Circle())
             }
         }
     }
 }
 
-struct TestData{
+struct TestData : Identifiable{
+    var id = UUID()
     var hasPrefix: String
     var completed : Bool
 }

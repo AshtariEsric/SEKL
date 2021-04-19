@@ -70,13 +70,13 @@ struct AddIngredientsAndRecipesToEKL: View {
                         TextField("Beschreibung", text: $beschreibung)
                         HStack{
                             TextField("Menge", text: $menge)
-                            Picker(selection: $unitType, label: Text("Art d. Menge")){
+                            Picker(selection: $unitType, label: Text("")){
                                 ForEach(Self.units, id:\.self)
                                 {
                                     Text($0)
                                 }
                             }
-                            .pickerStyle(WheelPickerStyle())
+
                             .frame(width: 100, height: 100)
                             myImage()
                         }

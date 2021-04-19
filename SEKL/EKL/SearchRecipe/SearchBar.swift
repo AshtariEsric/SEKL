@@ -17,10 +17,6 @@ struct SearchBar : View {
                               ToDoItem(name: "Prepare the presentation deck")
     ]
     
-    /*private var recipeItems = [ RecipeItem(zutaten: "test") ]
-    ]*/
-    
-    
     @State private var searchText = ""
     
     var body: some View {
@@ -30,7 +26,6 @@ struct SearchBar : View {
                 Spacer()
                 HStack {
                     SearchView(text: $searchText)
-                    
                 }
                 List(todoItems.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) })) { item in
                     CardView(searchText: item.name)
