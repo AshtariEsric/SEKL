@@ -81,7 +81,6 @@ struct RecipeIngredientsView: View {
                         
                         //Gefilterte Liste mit den Namen aus meinem Array
                 List {
-                    VStack{
                         ForEach(myArray.filter{$0.hasPrefix(searchText) || searchText == ""}, id:\.self)
                             {
                             searchText in VStack {
@@ -89,7 +88,6 @@ struct RecipeIngredientsView: View {
                             }
                         }
                         Spacer()
-                    }
                 }
                 .navigationBarTitle(Text("Suche"))
                 .resignKeyboardOnDragGesture()
