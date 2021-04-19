@@ -11,7 +11,7 @@ import SwiftUI
 /*
  Fügt ein Rezept zur Bibliothek hinzu
  **/
-struct AddRecipe: View
+struct AddRecipeToRecipeBook: View
 {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var recipe : Recipe
@@ -52,11 +52,11 @@ struct AddRecipe: View
                     }
                     
                     Button(action: {
-                                if let actualMenge = Int(self.mengePersonen){
-                                    let item = RecipesItem(beschreibung: self.beschreibung, mengePersonen: actualMenge)
+                        if Int(self.mengePersonen) != nil{
+                                    let item = RecipeItem(beschreibung: self.beschreibung, zutaten: [Zutat(beschreibung: "test", menge: 1, type: "default", unitType: "ml", itemImage: "default")])
                                     self.recipe.items.append(item)
                                     self.presentationMode.wrappedValue.dismiss()
-                                    print(item.mengePersonen)
+                                    print(item.zutaten)
                                     print(item.beschreibung)
                                 }
                     }){Text("Hinzufügen eines Rezepts")}

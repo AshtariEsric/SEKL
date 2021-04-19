@@ -11,17 +11,17 @@ import SwiftUI
 /*
     Aufbau eines ExpenseItem (einer Zutat)
  **/
-struct ExpenseItem : Identifiable, Codable {
-    let id = UUID()
+struct Zutat : Identifiable, Codable {
+    var id = UUID()
+    var isChecked : Bool = false
     let beschreibung : String
     let menge : Int
     let type : String
     let unitType : String
     let itemImage : String
 }
-
 class Expense: ObservableObject {
-    @Published var items = [ExpenseItem]()
+    @Published var items = [Zutat]()
         {
         didSet {
             let encoder = JSONEncoder()
@@ -36,7 +36,7 @@ class Expense: ObservableObject {
             let decoder = JSONDecoder()
             
             if let decoded = try?
-                decoder.decode([ExpenseItem].self,from: items){
+                decoder.decode([Zutat].self,from: items){
                 self.items = decoded
                 return
             }
@@ -75,7 +75,7 @@ struct EKLComplete: View {
                         
                 })
                     .sheet(isPresented: $showingAddExpense){
-                        AddView(expense: self.expenses, recipe: self.recipeBook)
+                        AddIngredientsAndRecipesToEKL(expense: self.expenses, recipe: self.recipeBook)
                 }
             }
             //tabItems um auf die anderen Views zu navigieren

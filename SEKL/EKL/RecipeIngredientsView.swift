@@ -35,84 +35,101 @@ extension View
     }
 }
 
+let myArrayData = [TestData(hasPrefix: "Dennis",completed: false), TestData(hasPrefix: "Tessa", completed: false), TestData(hasPrefix: "Peter", completed: false), TestData(hasPrefix: "Klaus", completed: false), TestData(hasPrefix: "Xyan", completed: false)]
+
 /*
-    Zutaten pflegen Button, zum hinzufügen von Zutaten zu einem Rezept.
+ Zutaten pflegen Button, zum hinzufügen von Zutaten zu einem Rezept.
  **/
 struct RecipeIngredientsView: View {
-    let myArray = ["Dennis", "Tessa", "Peter", "Anna", "Tessa", "Klaus", "Xyan", "Zuhau", "Clown", "Brot", "Bauer"]
     @State private var searchText = ""
     @State private var showCancelButton: Bool = false
-
     
     var body: some View {
-            VStack
+        VStack
+        {
+            HStack
             {
                 HStack
                 {
-                    HStack
+                    Image(systemName: "magnifyingglass")
+                    TextField("Suche", text: $searchText, onEditingChanged: { isEditing in self.showCancelButton = true}, onCommit: {
+                        print("onCommit")
+                    }).foregroundColor(.primary)
+                    
+                    Button(action: {
+                        self.searchText = searchText
+                    }){
+                        Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1)
+                    }
+                }.padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
+                .foregroundColor(.secondary)
+                .background(Color(.secondarySystemBackground))
+                .cornerRadius(10.0)
+                
+                if showCancelButton {
+                    Button("Abbrechen")
                     {
-                        Image(systemName: "magnifyingglass")
-                        TextField("Suche", text: $searchText, onEditingChanged: { isEditing in self.showCancelButton = true}, onCommit: {
-                            print("onCommit")
-                        }).foregroundColor(.primary)
-                        
-                        Button(action: {
-                            self.searchText = searchText
-                            }){
-                            Image(systemName: "xmark.circle.fill").opacity(searchText == "" ? 0 : 1)
-                            }
-                        }.padding(EdgeInsets(top: 8, leading: 6, bottom: 8, trailing: 6))
-                        .foregroundColor(.secondary)
-                        .background(Color(.secondarySystemBackground))
-                        .cornerRadius(10.0)
-                        
-                        if showCancelButton {
-                        Button("Abbrechen")
-                            {
-                            UIApplication.shared.endEditing(_force: true)
-                            self.searchText = ""
-                            self.showCancelButton = false
-                            }
-                                .foregroundColor(Color(.systemBlue))
-                            }
-                        }
-                        .padding(.horizontal)
-                        .navigationBarHidden(showCancelButton)
-                        
-                        //Gefilterte Liste mit den Namen aus meinem Array
-                List {
-                        ForEach(myArray.filter{$0.hasPrefix(searchText) || searchText == ""}, id:\.self)
-                            {
-                            searchText in VStack {
-                            CardView(searchText: searchText)
-                            }
-                        }
-                        Spacer()
+                        UIApplication.shared.endEditing(_force: true)
+                        self.searchText = ""
+                        self.showCancelButton = false
+                    }
+                    .foregroundColor(Color(.systemBlue))
                 }
-                .navigationBarTitle(Text("Suche"))
-                .resignKeyboardOnDragGesture()
             }
+            .padding(.horizontal)
+            .navigationBarHidden(showCancelButton)
+            
+            //Gefilterte Liste mit den Namen aus meinem Array
+            /*List() {
+                ForEach(myArrayData.filter{$0.hasPrefix(searchText) || searchText == ""})
+                {
+                    searchText in VStack {
+                        CardView(searchText: self.searchText)
+                    }
+                }
+                Spacer()
+            }*/
+            List(myArrayData, id:\.hasPrefix){ item in
+                    CardView(searchText: item.hasPrefix)
+                }
+            }
+            .navigationBarTitle(Text("Suche"))
+            .resignKeyboardOnDragGesture()
         }
     }
+
 
 struct CardView : View
 {
     @State var searchText = ""
+    @State var isChecked : Bool = false
+    
+    func toggle(){
+        isChecked = !isChecked
+    }
+    
     var body : some View
     {
         HStack{
             Text(searchText)
             Spacer()
-            Button(action: {print("\(searchText) btn pressed!")})
-                {
-                Image(systemName: "circle")
-                .frame(width:25, height:25)
-                .clipShape(Circle())
-                }
-             }
+
+            Button(action: {
+                toggle()
+                print("\(searchText) btn pressed!")})
+            {
+                Image(systemName: isChecked ? "checkmark.square" : "square")
+                        .frame(width:25, height:25)
+                        .clipShape(Circle())
+            }
+        }
     }
 }
 
+struct TestData{
+    var hasPrefix: String
+    var completed : Bool
+}
 
 struct RecipeIngredientsView_Previews: PreviewProvider {
     static var previews: some View {

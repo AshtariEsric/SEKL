@@ -9,47 +9,52 @@
 import SwiftUI
 
 struct SearchBar : View {
+    
     private var todoItems = [ ToDoItem(name: "Meet Eddie for lunch"),
-                                 ToDoItem(name: "Buy toilet paper"),
-                                 ToDoItem(name: "Write a new tutorial"),
-                                 ToDoItem(name: "Buy two bottles of wine"),
-                                 ToDoItem(name: "Prepare the presentation deck")
-                                   ]
-       
-       @State private var searchText = ""
-       
-       var body: some View {
-           
-           ZStack {
-               VStack {
+                              ToDoItem(name: "Buy toilet paper"),
+                              ToDoItem(name: "Write a new tutorial"),
+                              ToDoItem(name: "Buy two bottles of wine"),
+                              ToDoItem(name: "Prepare the presentation deck")
+    ]
+    
+    /*private var recipeItems = [ RecipeItem(zutaten: "test") ]
+    ]*/
+    
+    
+    @State private var searchText = ""
+    
+    var body: some View {
+        
+        ZStack {
+            VStack {
                 Spacer()
-                   HStack {
+                HStack {
+                    
+                    SearchView(text: $searchText)
+                    Button(action: {
+                        // show new task view
                         
-                        SearchView(text: $searchText)
-                         Button(action: {
-                             // show new task view
-                             
-                         }) {
-                             Image(systemName: "plus.circle.fill")
-                                 .font(.largeTitle)
-                                 .foregroundColor(.black)
-                         }
-                   }
-                   List(todoItems.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) })) { item in
-                       Text(item.name)
-                   }
-               }
-           }.navigationBarTitle("Rezepte")
-           .padding()
-       }
+                    }) {
+                        Image(systemName: "plus.circle")
+                            .font(.largeTitle)
+                            .foregroundColor(.black)
+                    }
+                }
+                List(todoItems.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) })) { item in
+                    Text(item.name)
+                }
+            }
+        }.navigationBarTitle("Rezepte")
+        .padding()
+    }
 }
 
 
 struct SearchView: View {
     @Binding var text: String
-
+    
     @State private var isEditing = false
-        
+    
     var body: some View {
         HStack {
             

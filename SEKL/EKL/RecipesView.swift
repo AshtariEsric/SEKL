@@ -7,37 +7,6 @@
 //
 
 import SwiftUI
-
-struct RecipesItem : Identifiable, Codable {
-    let id = UUID()
-    let beschreibung : String
-    let mengePersonen : Int
-}
-
-class Recipe : ObservableObject {
-    @Published var items = [RecipesItem]()
-        {
-        didSet {
-            let encoder = JSONEncoder()
-            if let encoded = try?
-                encoder.encode(items){
-                UserDefaults.standard.set(encoded, forKey: "Items")
-            }
-        }
-    }
-    init() {
-        if let ReItems = UserDefaults.standard.data(forKey: "Items"){
-            let decoder = JSONDecoder()
-            
-            if let decoded = try?
-                decoder.decode([RecipesItem].self, from: ReItems){
-                self.items = decoded
-                return
-            }
-        }
-        self.items = []
-    }
-}
 /*
     Rezept Bibliothek 
  **/
@@ -70,7 +39,7 @@ struct RecipesView: View {
                                         Image(systemName: "book.fill")
                                     })
                                     .sheet(isPresented: $showingAddRecipe){
-                                        AddRecipe(recipe: self.recipe)
+                                        AddRecipeToRecipeBook(recipe: self.recipe)
                                     }
         }
     }
