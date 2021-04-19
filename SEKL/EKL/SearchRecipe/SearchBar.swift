@@ -29,19 +29,11 @@ struct SearchBar : View {
             VStack {
                 Spacer()
                 HStack {
-                    
                     SearchView(text: $searchText)
-                    Button(action: {
-                        // show new task view
-                        
-                    }) {
-                        Image(systemName: "plus.circle")
-                            .font(.largeTitle)
-                            .foregroundColor(.black)
-                    }
+                    
                 }
                 List(todoItems.filter({ searchText.isEmpty ? true : $0.name.contains(searchText) })) { item in
-                    Text(item.name)
+                    CardView(searchText: item.name)
                 }
             }
         }.navigationBarTitle("Rezepte")
@@ -52,7 +44,6 @@ struct SearchBar : View {
 
 struct SearchView: View {
     @Binding var text: String
-    
     @State private var isEditing = false
     
     var body: some View {
